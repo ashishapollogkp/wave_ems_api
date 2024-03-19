@@ -1,0 +1,342 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "dashboard";
+}
+
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">My Dashboard</h4>
+    </div>
+</div>
+
+@*<div class="row" *ngIf="responseData.role != 'SuperAdmin'">
+    <div class="col-xl-3 col-md-6">
+        <div class="text-center card card-holiday">
+            <div class="card-body">
+                <div>
+                    <label for="onUploadChange">
+                        <input type="file" id="onUploadChange" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" style="display: none;" />
+                        <img *ngIf="empProfileData.feature_image != null" src="~/Images/{{empProfileData.feature_image}}" id="img" class="rounded-circle thumb-lg img-thumbnail m-b-10" alt="{{empProfileData.name}}">
+                        <img *ngIf="empProfileData.feature_image == null" src="~/Images/avatar-1.jpg" class="rounded-circle thumb-lg img-thumbnail m-b-10" alt="{{empProfileData.name}}">
+                    </label>
+                    <p class="text-muted font-13 mb-4">
+                        Hi I'm {{empProfileData.name}}
+                    </p>
+
+                    <div class="text-left">
+                        <h6 class="page-title">Personal Details</h6>
+                        <p class="text-muted font-12 text-capitalize"><strong>Employee Id :</strong> <span class="m-l-15">{{empProfileData.employee_id}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Name :</strong> <span class="m-l-15">{{empProfileData.name}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Designation :</strong> <span class="m-l-15">{{empProfileData.designation}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Department :</strong> <span class="m-l-15">{{empProfileData.role}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Date Of Birth :</strong> <span class="m-l-15">{{empProfileData.dob}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Date Of Joining :</strong> <span class="m-l-15">{{empProfileData.doj}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Father's Name :</strong> <span class="m-l-15">{{empProfileData.father_name}}</span></p>
+
+                        <h6 class="page-title">Communication</h6>
+                        <p class="text-muted font-12 text-capitalize"><strong>Mobile :</strong><span class="m-l-15">{{empProfileData.mobile_no}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Email :</strong> <span class="m-l-15">{{empProfileData.email}}</span></p>
+                        <h6 class="page-title">Reportings</h6>
+                        <p class="text-muted font-12 text-capitalize"><strong>Employee Id :</strong> <span class="m-l-15">{{empProfileData.repoting_to}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Name :</strong> <span class="m-l-15">{{empProfileData.reporting_to_name}}</span></p>
+                        <h6 class="page-title">Location</h6>
+                        <p class="text-muted font-12 text-capitalize mb-0"><strong>Payroll Area :</strong> <span class="m-l-15">{{empProfileData.pay_code}}</span></p>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xl-5 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="dropdown-item">Action</a></li>
+                        <li><a href="#" class="dropdown-item">Another action</a></li>
+                        <li><a href="#" class="dropdown-item">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="#" class="dropdown-item">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <h4 class="header-title m-t-0 m-b-30">Leave Performance</h4>
+
+                <div class="row text-center m-t-30">
+                    <div class="col-4">
+                        <h3 data-plugin="counterup">{{donatActuals}}</h3>
+                        <p class="text-muted">Total Leave</p>
+                    </div>
+                    <div class="col-4">
+                        <h3 data-plugin="counterup">{{donatActuals1}}</h3>
+                        <p class="text-muted">Availed</p>
+                    </div>
+                    <div class="col-4">
+                        <h3 data-plugin="counterup">{{donatActuals2}}</h3>
+                        <p class="text-muted">Balance</p>
+                    </div>
+                </div>
+                <div id="animating-donut" class="ct-chart ct-golden-section"></div>
+            </div>
+        </div>
+    </div><!-- end col-->
+    <div class="col-xl-4 col-md-12">
+        <div class="card card-holiday">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Holiday Calander</h4>
+                <div>
+                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Holiday</th>
+                                <th style="width: 100px;">Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let item of responseData.holiday let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.from_date | date : 'dd/MM/yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- end col-->
+</div>
+<!-- end row -->
+
+<div class="row" *ngIf="responseData.role == 'SuperAdmin'">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="dropdown-item">Action</a></li>
+                        <li><a href="#" class="dropdown-item">Another action</a></li>
+                        <li><a href="#" class="dropdown-item">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="#" class="dropdown-item">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <h4 class="header-title m-t-0 m-b-30">Employee Performance</h4>
+
+                <div id="EmpPeiChart" class="ct-chart ct-golden-section"></div>
+            </div>
+        </div>
+    </div><!-- end col-->
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="dropdown-item">Action</a></li>
+                        <li><a href="#" class="dropdown-item">Another action</a></li>
+                        <li><a href="#" class="dropdown-item">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="#" class="dropdown-item">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <h4 class="header-title m-t-0 m-b-30">Apply Request</h4>
+
+                <div id="hmcdistributed-series" class="ct-chart ct-golden-section"></div>
+            </div>
+        </div>
+    </div><!-- end col-->
+    @*<div class="col-xl-3 col-md-6 text-center">
+            <div class="card widget-user">
+                <div class="card-body cursor">
+                    <div class="wid-u-info1">
+                        <h3 class="m-t-0 m-b-0 text-pink">Total Employee</h3>
+                        <p class="m-t-0 m-b-0 font-30 text-warning">{{resDataObj.totalEmployee}}</p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end col -->
+        <div class="col-xl-3 col-md-6 text-center">
+            <div class="card widget-user">
+                <div class="card-body cursor">
+                    <div class="wid-u-info1">
+                        <h3 class="m-t-0 m-b-0 text-pink">Active Employee</h3>
+                        <p class="m-t-0 m-b-0 font-30 text-warning">{{resDataObj.activeEmployee}}</p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end col -->
+        <div class="col-xl-3 col-md-6 text-center">
+            <div class="card widget-user">
+                <div class="card-body cursor">
+                    <div class="wid-u-info1">
+                        <h3 class="m-t-0 m-b-0 text-pink">Total Apply Leave</h3>
+                        <p class="m-t-0 m-b-0 font-30 text-warning">{{resDataObj.totalApplyLeave}}</p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end col -->
+        <div class="col-xl-3 col-md-6 text-center">
+            <div class="card widget-user">
+                <div class="card-body cursor">
+                    <div class="wid-u-info1">
+                        <h3 class="m-t-0 m-b-0 text-pink">Total Mispunch</h3>
+                        <p class="m-t-0 m-b-0 font-30 text-warning">{{resDataObj.totalMispunch}}</p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end col -->*@
+
+    <!--<div class="col-xl-3 col-md-6 text-center">
+        <div class="card widget-user">
+            <div class="card-body cursor">
+                <div class="wid-u-info1">
+                    <h3 class="m-t-0 m-b-0 text-pink">Present Employee</h3>
+                    <p class="m-t-0 m-b-0 font-30 text-warning">80</p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- end col -->
+    <div class="col-xl-12"></div>
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Leave Request</h4>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th style="width: 100px;">Employee Id</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th style="width: 86px;">No Of Lev.</th>
+                                <th>From Date</th>
+                                <th>To Date</th>
+                                <th>Reason</th>
+                                <th>Status</th>
+                                <th style="width: 177px;">Approved By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of responseData.applyleave let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.employee_id}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.leave_type}} </td>
+                                <td>{{item.no_of_leave}} days</td>
+                                <td>{{item.fromdate}}</td>
+                                <td>{{item.todate}}</td>
+                                <td>{{item.reason}}</td>
+                                <td>
+                                    <span *ngIf="item.status == 'pending'" class="badge badge-warning">{{item.status}}</span>
+                                    <span *ngIf="item.status == 'approved'" class="badge badge-success">{{item.status}}</span>
+                                    <span *ngIf="item.status == 'rejected'" class="badge badge-danger">{{item.status}}</span>
+                                </td>
+                                <td>{{item.assig_by_name}} ({{item.assign_by}})</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-right pad-t-15"><span class="badge badge-warning font-13 cursor" (click)="viewApplyLeave()">View More</span></p>
+                </div>
+            </div>
+        </div>
+    </div><!-- end col -->
+    <div class="col-xl-12"></div>
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Max Employee Apply Mispunch</h4>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Employee Id</th>
+                                <th>Name</th>
+                                <th>Manager ID</th>
+                                <th>Manager Name</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of resDataObj.mispunchEmployee let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.employee_id}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.approve_by}} </td>
+                                <td>{{item.approve_by_name}}</td>
+                                <td>{{item.miscount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->
+<!-- Page-Title -->
+
+<div class="row" *ngIf="responseData.role != 'SuperAdmin'">
+    <div class="col-sm-12" *ngIf="myteam.length > 0">
+        <h4 class="page-title">My Team</h4>
+        <div class="col-xl-3 col-md-6" *ngFor="let item of myteam let i=index">
+            <div class="card widget-user" (click)="teamSubmit(item.employee_id)">
+                <div class="card-body cursor">
+                    <img *ngIf="item.feature_image == null || item.feature_image == ''" src="~/Images/avatar-1.jpg" class="img-fluid d-block rounded-circle"
+                         alt="{{item.name}}">
+                    <img *ngIf="item.feature_image != null && item.feature_image != ''" src="{{item.feature_image}}" style="width: 72px;" class="img-fluid d-block rounded-circle"
+                         alt="{{item.name}}">
+                    <div class="wid-u-info">
+                        <h4 class="m-t-0 m-b-0 font-14">{{item.name}}</h4>
+                        <p class="text-muted m-b-0 font-13">{{item.employee_id}}</p>
+                        <p class="text-muted m-b-0 font-13">{{item.email}}</p>
+                        <small class="text-custom"><b>{{item.designation}}</b></small>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end col -->
+    </div>
+</div>
+<!-- end row -->
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>Submission Successful !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+

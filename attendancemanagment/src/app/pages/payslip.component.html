@@ -1,0 +1,75 @@
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Manage Payslip</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-3">
+        <a id="ExportExcelData" target="_blank" download href=""></a>
+    </div><!-- end col -->
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Download Payslip</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                                <th>Generate Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="responseData.length > 0">
+                            <tr *ngFor="let item of responseData let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.month}}</td>
+                                <td>{{item.year}}</td>
+                                <td>{{item.modify_date | date : 'dd/MM/yyyy'}}</td>
+                                <td class="actions">
+                                    <a href="javascript:void(0)" (click)="downloadPayslipSubmit(item.id)" class="btn2 btn-icon waves-effect btn-success m-b-5"><i class="fa fa-download"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody *ngIf="responseData.length == 0">
+                            <tr class="text-center">
+                                <td colspan="9"> <strong>No Data Found</strong> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                    <ul class="pagination">
+                        <li class="paginate_button page-item previous disabled" id="datatable_previous"><a href="javascript:void(0);" *ngIf="setPageNoNext" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                        <li class="paginate_button page-item next" id="datatable_next"><a href="javascript:void(0);" *ngIf="setPageNo" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>Submission Successful !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

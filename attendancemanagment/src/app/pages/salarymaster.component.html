@@ -1,0 +1,312 @@
+<!-- Page-Title -->
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <ul class="nav nav-pills nav-pills-custom display-xs-none float-right m-t-25">
+            <li class="nav-item">
+                <a class="nav-link view_id active" href="javascript:void(0);" (click)="changeTabSubmit('view_id');">View Salary Master</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link add_new" href="javascript:void(0);" (click)="changeTabSubmit('add_new');">Add New Salary Master</a>
+            </li>
+            <!--<li class="nav-item">
+                <a class="nav-link generate_salary" href="javascript:void(0);" (click)="changeTabSubmit('generate_salary');">Generate Salary Slip</a>
+            </li>-->
+        </ul>
+        <h4 class="page-title">Salary Master</h4>
+        <!-- sample modal content -->
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12" *ngIf="tabChange == 'add_new'">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Add New</h4>
+
+                <form id="profileupdateBasic" #catForm="ngForm">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <label for="userName">Company<span class="require">*</span></label>
+                                <select class="form-control" name="pay_code" id="pay_code" [(ngModel)]="submitObj.pay_code" checkMandatory="true" (focus)="onFocus()">
+                                    <option value=""></option>
+                                    <option *ngFor="let item of companyList let i=index" value="{{item.company_code}}">{{item.name}}</option>
+                                </select>
+
+                                <span class="ng-hide displayError" id="pay_code_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <label for="userName">HRA(%)</label>
+                                <input type="text" name="hra" placeholder="ex. 00" class="form-control" id="hra" [(ngModel)]="submitObj.hra" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="hra_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <label for="userName">Basic(%)</label>
+                                <input type="text" name="basic" placeholder="ex. 00" class="form-control" id="basic" [(ngModel)]="submitObj.basic" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="basic_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <label for="userName">Allowance(%)</label>
+                                <input type="text" name="allowance" placeholder="ex. 00" class="form-control" id="allowance" [(ngModel)]="submitObj.allowance" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="allowance_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <label for="userName">PF(%)</label>
+                                <input type="text" name="pf" placeholder="ex. 00" class="form-control" id="pf" [(ngModel)]="submitObj.pf" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="pf_error"></span>
+                            </div>
+                        </div>                        
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <label for="userName">TDS(%)</label>
+                                <input type="text" name="tds" placeholder="ex. 00" class="form-control" id="tds" [(ngModel)]="submitObj.tds" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="tds_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <label for="userName">ESI(%)</label>
+                                <input type="text" name="esi" placeholder="ex. 00" class="form-control" id="esi" [(ngModel)]="submitObj.esi" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="esi_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group text-left m-b-0">
+                                <button *ngIf="setCreate" class="btn btn-primary waves-effect waves-light" (click)="CreateSubmit()" type="button">
+                                    Submit
+                                </button>
+                                <button *ngIf="setUpdate" class="btn btn-primary waves-effect waves-light" (click)="updateSubmit()" type="button">
+                                    Update
+                                </button>
+                                <button type="reset" class="btn btn-warning waves-effect waves-light m-l-5">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- end col -->
+    <div class="col-xl-12" *ngIf="tabChange == 'view_id'">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">View Salary Master</h4>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Company</th>
+                                <th>Basic(%)</th>
+                                <th>HRA(%)</th>
+                                <th>Allowance(%)</th>
+                                <th>PF(%)</th>
+                                <th>TDS(%)</th>
+                                <th>ESI(%)</th>
+                                <th style="width: 100px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="salaryMasterList.length > 0">
+                            <tr *ngFor="let item of salaryMasterList let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.pay_code}}</td>
+                                <td>{{item.basic}}</td>
+                                <td>{{item.hra}}</td>
+                                <td>{{item.allowance}}</td>
+                                <td>{{item.pf}}</td>
+                                <td>{{item.tds}}</td>
+                                <td>{{item.esi}}</td>
+                                <td class="actions">
+                                    <a href="javascript:void(0)" (click)="editSubmit(i)" class="btn2 btn-icon waves-effect btn-success m-b-5"><i class="fa fa-pencil"></i></a>
+                                    <a href="javascript:void(0)" (click)="deleteSubmit(item.id)" class="btn2 btn-icon waves-effect btn-danger m-b-5"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody *ngIf="salaryMasterList.length == 0">
+                            <tr class="text-center">
+                                <td colspan="9"> <strong>No Data Found</strong> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                    <ul class="pagination">
+                        <li class="paginate_button page-item previous disabled" id="datatable_previous"><a href="javascript:void(0);" *ngIf="setPageNoNext" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                        <li class="paginate_button page-item next" id="datatable_next"><a href="javascript:void(0);" *ngIf="setPageNo" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- end col -->
+    <!-- generate salary slip -->
+    <div class="col-xl-12" *ngIf="tabChange == 'generate_salary'">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Generate Slip</h4>
+
+                <form id="profileupdateBasic2" #catForm="ngForm">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="form-group">
+                                <label for="userName">Company<span class="require">*</span></label>
+                                <select class="form-control" name="company_code" id="company_code" [(ngModel)]="submitObj.company_code" checkMandatory="true" (focus)="onFocus()">
+                                    <option value=""></option>
+                                    <option *ngFor="let item of companyList let i=index" value="{{item.company_code}}">{{item.name}}</option>
+                                </select>
+                                <span class="ng-hide displayError" id="company_code_error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="userName">Select Month<span class="require">*</span></label>
+                                <select class="form-control" name="month" id="pay_code" [(ngModel)]="submitObj.month" checkMandatory="true" (focus)="onFocus()">
+                                    <option value=""></option>
+                                    <option value="Jan">Jan</option>
+                                    <option value="Feb">Feb</option>
+                                    <option value="Mar">Mar</option>
+                                    <option value="Apr">Apr</option>
+                                    <option value="May">May</option>
+                                    <option value="Jun">Jun</option>
+                                    <option value="Jul">Jul</option>
+                                    <option value="Aug">Aug</option>
+                                    <option value="Sep">Sep</option>
+                                    <option value="Oct">Oct</option>
+                                    <option value="Nov">Nov</option>
+                                    <option value="Dec">Dec</option>
+                                </select>
+                                <span class="ng-hide displayError" id="month_error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="userName">Year<span class="require">*</span></label>
+                                <select class="form-control" name="year" id="year" [(ngModel)]="submitObj.year" checkMandatory="true" (focus)="onFocus()">
+                                    <option value=""></option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                </select>
+                                <span class="ng-hide displayError" id="year_error"></span>
+                            </div>
+                            <div class="form-group text-left m-b-0">
+                                <!--<button *ngIf="setSCreate" class="btn btn-primary waves-effect waves-light" (click)="CreateSalarySlipSubmit()" type="button">
+                                    Submit
+                                </button>
+                                <button *ngIf="setSUpdate" class="btn btn-primary waves-effect waves-light" (click)="updateSalarySlipSubmit()" type="button">
+                                    Update
+                                </button>-->
+                                <button type="reset" class="btn btn-warning waves-effect waves-light m-l-5">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-xl-8">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Company</th>
+                                            <th>Month</th>
+                                            <th>Year</th>
+                                            <th style="width: 100px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngIf="salarySlipList.length > 0">
+                                        <tr *ngFor="let item of salarySlipList let i=index">
+                                            <td>{{i+1}}</td>
+                                            <td>{{item.pay_code}}</td>
+                                            <td>{{item.month}}</td>
+                                            <td>{{item.year}}</td>
+                                            <td class="actions">
+                                                <a href="javascript:void(0)" class="btn2 btn-icon waves-effect btn-danger m-b-5"><i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody *ngIf="salarySlipList.length == 0">
+                                        <tr class="text-center">
+                                            <td colspan="5"> <strong>No Data Found</strong> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item previous disabled" id="datatable_previous"><a href="javascript:void(0);" *ngIf="setPageNoNext" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                    <li class="paginate_button page-item next" id="datatable_next"><a href="javascript:void(0);" *ngIf="setPageNo" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>Submission Successful !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="deletesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>You want to delete Salary Master !!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" (click)="deleteRow(targetindex)">Yes</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deletesalarysubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>You want to delete Salary Slip !!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm">Yes</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿<!-- Navigation Bar-->
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="" class="logo" style="width: 100px;">
+                    <span><img src="~/Images/logo-hero.png" style="width: 56%;" alt="logo"></span>
+                </a>
+            </div>
+            <!-- End Logo container-->
+            <div class="navbar-custom navbar-left">
+                <div id="navigation">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
+                        <li>
+                            <a routerLink="" routerLinkActive="active" href="javascript:void(0);">
+                                <span><i class="zmdi zmdi-view-dashboard"></i></span>
+                                <span> My Dashboard </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="employee" routerLinkActive="active" href="javascript:void(0);">
+                                <span><i class="zmdi zmdi-assignment-account"></i></span>
+                                <span> Manage Employee </span>
+                            </a>
+                        </li>                        
+                        <li class="has-submenu">
+                            <a href="#"> <span><i class="zmdi zmdi-collection-item"></i></span><span> Master </span> </a>
+                            <ul class="submenu">
+                                <li><a routerLink="department" routerLinkActive="active" href="javascript:void(0);"><i class="zmdi zmdi-present-to-all"></i> Department</a></li>
+                                <li><a routerLink="designation" routerLinkActive="active" href="javascript:void(0);"><i class="zmdi zmdi-present-to-all"></i> Designation</a></li>
+                                <li><a routerLink="payrole-area" routerLinkActive="active" href="javascript:void(0);"><i class="zmdi zmdi-present-to-all"></i> Payroll Area</a></li>
+                                <li><a routerLink="leave-type" routerLinkActive="active" href="javascript:void(0);"><i class="zmdi zmdi-flattr"></i> Leave Type</a></li>
+                                <li><a routerLink="holiday" routerLinkActive="active" href="javascript:void(0);"><i class="zmdi zmdi-flattr"></i> Holidays</a></li>
+                                <li><a routerLink="shift" routerLinkActive="active" href="javascript:void(0);"><i class="zmdi zmdi-flattr"></i> Shift</a></li>
+                                <li><a routerLink="policy" routerLinkActive="active" href="javascript:void(0);"><i class="zmdi zmdi-flattr"></i> Leave Policy</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-submenu">
+                            <a href="#"> <span><i class="zmdi zmdi-slideshare"></i></span><span> Manage Request </span> </a>
+                            <ul class="submenu">
+                                <li><a routerLink="leave-request" routerLinkActive="active" href="javascript:void(0);"><i class="zmdi zmdi-present-to-all"></i> Leave Request</a></li>
+                                <li><a routerLink="attendance-request" routerLinkActive="active" href="javascript:void(0);"><i class="zmdi zmdi zmdi-flattr"></i> Attendance</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- End navigation menu  -->
+                </div>
+            </div>
+
+            <div class="menu-extras">
+                <ul class="nav navbar-right float-right list-inline">
+                    <li class="list-inline-item" style="margin-right: -1.5rem;">
+                        <a href="javascript:void(0);" class="right-bar-toggle1" style="color: #fe6271 !important;">
+                            {{username.name}}
+                        </a>
+                    </li>
+                    <li class="dropdown user-box list-inline-item">
+                        <a class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" href="#">
+                            
+                            <img *ngIf="username.feature_image != null" src="~/Images/{{username.feature_image}}" id="img" class="rounded-circle user-img" alt="{{username.name}}">
+                            <img *ngIf="username.feature_image == null" src="~/Images/avatar-1.jpg" class="rounded-circle user-img" alt="{{username.name}}">
+                   
+                            <div class="user-status away"><i class="zmdi zmdi-dot-circle"></i></div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a routerLink="profile" routerLinkActive="active" href="javascript:void(0)" class="dropdown-item"><i class="ti-user m-r-5"></i> Profile</a></li>                            
+                            <li><a href="javascript:$('#logOffForm').submit()" class="dropdown-item"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+<!-- End Navigation Bar-->

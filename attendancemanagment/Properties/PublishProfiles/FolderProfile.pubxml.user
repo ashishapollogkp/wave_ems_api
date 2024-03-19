@@ -1,0 +1,1332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>E:\BRjOldLapiBackup\attendancemanagment\Published</_PublishTargetUrl>
+    <History>True|2023-02-27T07:20:21.7577740Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include=".editorconfig">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include=".gitignore">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="angular.json">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/HelpPage.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Api.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ApiGroup.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/CollectionModelDescription.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ComplexTypeModelDescription.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/DictionaryModelDescription.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/EnumTypeModelDescription.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/HelpPageApiModel.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ImageSample.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/InvalidSample.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/KeyValuePairModelDescription.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ModelDescriptionLink.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Parameters.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Samples.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/SimpleTypeModelDescription.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/TextSample.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Index.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/ResourceModel.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Shared/_Layout.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Web.config">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/_ViewStart.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/attendancemanagment.dll">
+      <publishTime>02/27/2023 12:50:16</publishTime>
+    </File>
+    <File Include="bin/attendancemanagment.pdb">
+      <publishTime>02/27/2023 12:50:16</publishTime>
+    </File>
+    <File Include="bin/ClosedXML.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/ClosedXML.pdb">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/ExcelNumberFormat.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/FastMember.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/GeoCoordinate.NetStandard1.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/itextsharp.xmlworker.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/QRCoder.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Owin.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="browserslist">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap.min.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/chartist.min.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/icons.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/images/ui-icons_444444_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/images/ui-icons_555555_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/images/ui-icons_777620_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/images/ui-icons_777777_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/images/ui-icons_cc0000_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/images/ui-icons_ffffff_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/jquery-ui.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/css/style.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont5b62.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont5b62.svg">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont5b62.ttf">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont5b62.woff">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont5b62.woff2">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfontd41d.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/Material-Design-Iconic-Fontd1f1.ttf">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/Material-Design-Iconic-Fontd1f1.woff">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/Material-Design-Iconic-Fontd1f1.woff2">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/themify9f24.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/themify9f24.svg">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/themify9f24.ttf">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/themify9f24.woff">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/fonts/themifyd41d.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_444444_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_555555_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_777620_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_777777_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_cc0000_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_ffffff_256x240.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/bootstrap.bundle.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/detect.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/fastclick.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/jquery.app.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/jquery.blockUI.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/jquery.core.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/jquery.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/jquery.nicescroll.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/jquery.scrollTo.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/jquery.slimscroll.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/modernizr.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/waves.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/js/wow.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.chartist.init.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.dashboard.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.datatables.editable.init.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.datatables.init.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.flot.init.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.gmaps.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.jvectormap.init.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.morris.init.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.sweet-alert.init.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.ui-sliders.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/pages/jquery.widgets.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="dist/out-tsc/e2e/src/app.e2e-spec.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/e2e/src/app.e2e-spec.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/e2e/src/app.po.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/e2e/src/app.po.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/add-employee.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/add-employee.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/addemployee.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/addemployee.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/app-routing.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/app-routing.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/app.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/app.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/app.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/app.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/attendance.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/attendance.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/attendance.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/attendance.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/auth.guard.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/auth.guard.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/authentication.service.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/authentication.service.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/daily-attendance.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/daily-attendance.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/dailyattendance.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/dailyattendance.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/dashboard.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/dashboard.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/department.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/department.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/department.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/department.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/designation.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/designation.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/designation.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/designation.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employee-attendance.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employee-attendance.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employee-shift.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employee-shift.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employee.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employee.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employee.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employee.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employeeattendance.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employeeattendance.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employeeshift.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/employeeshift.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/formtwefotin.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/formtwefotin.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/generate-salary/generate-salary.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/generate-salary/generate-salary.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/generate-salary/generate-salary.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/generate-salary/generate-salary.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/holiday.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/holiday.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/holiday.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/holiday.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leave-request.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leave-request.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leave.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leave.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leave.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leave.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leaverequest.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leaverequest.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leavetype.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leavetype.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leavetype.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/leavetype.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/mispunch.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/mispunch.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/mispunch.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/mispunch.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/mispunchrequest.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/mispunchrequest.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/mispunchrequest.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/mispunchrequest.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/my-team.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/my-team.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/myteam.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/myteam.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/offerletter.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/offerletter.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/offerletter.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/offerletter.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/payrolearea.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/payrolearea.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/payrolearea.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/payrolearea.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/payslip.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/payslip.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/profile.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/profile.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/profile.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/profile.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/reports.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/reports.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/reports.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/reports.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/role.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/role.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/role.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/role.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/role.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/role.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/salarymaster.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/salarymaster.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/salarymaster.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/salarymaster.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/salaryslip.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/salaryslip.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/salaryslip.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/salaryslip.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/shift.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/shift.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/shift.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/shift.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/summary.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/summary.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/summary.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/summary.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/teamattendance.component.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/teamattendance.component.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/teamattendance.module.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/teamattendance.module.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/user.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/app/user.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/BaseContainer.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/BaseContainer.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/RequestContainer.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/RequestContainer.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/ResponseContainer.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/ResponseContainer.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/service/http.service.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/service/http.service.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/service/HttpRequestObj.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/service/HttpRequestObj.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/service/HttpResponseObj.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/service/HttpResponseObj.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/ValidationHandler.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/common/ValidationHandler.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/environments/environment.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/environments/environment.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/environments/environment.prod.js">
+      <publishTime>02/27/2023 12:48:02</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/environments/environment.prod.js.map">
+      <publishTime>02/27/2023 12:48:02</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/main.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/main.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/polyfills.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/polyfills.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/test.js">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="dist/out-tsc/src/test.js.map">
+      <publishTime>02/27/2023 12:48:01</publishTime>
+    </File>
+    <File Include="e2e/protractor.conf.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="e2e/tsconfig.json">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfont5b62.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfont5b62.svg">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfont5b62.ttf">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfont5b62.woff">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfont5b62.woff2">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfontd41d.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/Material-Design-Iconic-Fontd1f1.ttf">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/Material-Design-Iconic-Fontd1f1.woff">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/Material-Design-Iconic-Fontd1f1.woff2">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/themify9f24.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/themify9f24.svg">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/themify9f24.ttf">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/themify9f24.woff">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/themifyd41d.eot">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="fonts/Web.config">
+      <publishTime>02/27/2023 12:50:17</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/avatar-1.jpg">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/pdf_logo.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/pdf_logo1.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl.jpg">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl.PNG">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl10.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl2.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl3.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl4.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl5.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl6.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl7.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl8.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/rrpl9.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/skylabs.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/wave-infra.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/wave-infra2.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Images/wave-infra3.png">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="karma.conf.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="package-lock.json">
+      <publishTime>06/02/2022 20:05:41</publishTime>
+    </File>
+    <File Include="package.json">
+      <publishTime>06/03/2022 10:26:11</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="README.md">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/calander/fullcalendar.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/calander/moment.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/chartist/chartist-bar-labels.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/chartist/chartist-plugin-tooltip.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/chartist/chartist.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/chartist/dist/chartist-plugin-tooltip.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/chartist/dist/chartist.min.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/chartist/dist/chartist.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/chartist/jquery.chartist.init.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/chartist/morris.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/bootstrap-datepicker.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/bootstrap.bundle.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/detect.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/fastclick.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/jquery-ui.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/jquery.app.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/jquery.blockUI.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/jquery.core.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/jquery.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/jquery.nicescroll.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/jquery.scrollTo.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/jquery.slimscroll.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/modernizr.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/waves.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/js/wow.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/generate-salary/generate-salary.component.html">
+      <publishTime>02/27/2023 12:06:48</publishTime>
+    </File>
+    <File Include="src/app/pages/add-employee.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/app.component.html">
+      <publishTime>02/27/2023 12:35:04</publishTime>
+    </File>
+    <File Include="src/app/pages/attendance.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/daily-attendance.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/dashboard.component.html">
+      <publishTime>07/16/2022 15:53:20</publishTime>
+    </File>
+    <File Include="src/app/pages/department.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/designation.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/employee-attendance.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/employee-shift.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/employee.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/formtwelveforteen.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/holiday.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/leave-request.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/leave-type.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/leave.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/mispunch.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/mispunchrequest.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/myteam.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/offerletter.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/payrolearea.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/payslip.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/profile.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/reports.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/role.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/salarymaster.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/salaryslip.component.html">
+      <publishTime>02/27/2023 12:20:52</publishTime>
+    </File>
+    <File Include="src/app/pages/shift.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/summary.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/app/pages/teamattendance.component.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/assets/.gitkeep">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/favicon.ico">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/index.html">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="src/styles.css">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="tsconfig.app.json">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="tsconfig.json">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="tsconfig.spec.json">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="tslint.json">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Administrator/App.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Administrator/ChangePassword.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Administrator/Dashboard.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Administrator/Index.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Administrator/MyDashboard.cshtml">
+      <publishTime>07/16/2022 11:51:50</publishTime>
+    </File>
+    <File Include="Views/Home/Error.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Home/Login.cshtml">
+      <publishTime>07/16/2022 18:28:04</publishTime>
+    </File>
+    <File Include="Views/Home/ResetPassword.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Home/SubmitOtp.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Home/Success.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Include/AddnewUserBackup.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Include/AdminHeader.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Include/Footer.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Include/OfferLetter.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>04/27/2022 22:43:20</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/27/2023 12:50:17</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

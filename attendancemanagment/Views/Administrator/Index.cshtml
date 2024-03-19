@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "My Dashboard";
+}
+
+@RenderPage(@ViewBag.sidebarScriptFilepath)
+
+<div class="wrapper">
+    <div class="container-fluid">
+        <!-- Loads Routes Angular Templates -->
+
+        <router-outlet></router-outlet>
+
+
+    </div>
+
+    @RenderPage("~/Views/Include/Footer.cshtml")
+</div>
+

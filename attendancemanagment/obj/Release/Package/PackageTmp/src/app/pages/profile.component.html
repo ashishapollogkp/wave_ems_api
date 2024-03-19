@@ -1,0 +1,199 @@
+<!-- Page-Title -->
+<div class="row m-t-30">
+    <div class="col-sm-12">
+        <h4 class="page-title"></h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <ul class="nav nav-pills tabmenu nav-pills-custom display-xs-none float-right m-t-25">
+            <li class="nav-item">
+                <a class="nav-link my-profile active" (click)="profileSubmit('my-profile');" href="javascript:void(0);">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link change-password" (click)="profileSubmit('change-password');" href="javascript:void(0);">Change Password</a>
+            </li>
+            <!--<li class="nav-item">
+                <a class="nav-link fund_summary" (click)="profileSubmit('fund_summary');" href="javascript:void(0);">Fund Summary</a>
+            </li>-->
+        </ul>
+
+        <h4 class="page-title">Manage Profile</h4>
+    </div>
+</div>
+<div class="row  m-t-30">
+    <div class="col-xl-3">
+    </div>
+    <div class="col-xl-6 col-md-12" *ngIf="resData == 'my-profile'">
+        <div class="text-center card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+                </div>
+                <div>
+                    <label for="onUploadChange">
+                        <input type="file" id="onUploadChange" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" style="display: none;" />
+                        <img *ngIf="submitObj.feature_image == null" src="../Images/avatar-1.jpg" class="rounded-circle thumb-xl img-thumbnail m-b-10" alt="{{submitObj.name}}">
+                        <img *ngIf="submitObj.feature_image != null" src="../Images/{{submitObj.feature_image}}" class="rounded-circle thumb-xl img-thumbnail m-b-10" alt="{{submitObj.name}}">
+                    </label>
+
+                    <p class="text-muted font-13 mb-4">
+                        Hi I'm {{submitObj.name}}
+                    </p>
+
+                    <div class="text-left">
+                        <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15">{{submitObj.email}}</span></p>
+                        <p class="text-muted font-13"><strong>Father's Name :</strong> <span class="m-l-15">{{submitObj.father_name}}</span></p>
+                        <p class="text-muted font-13"><strong>Mobile :</strong><span class="m-l-15">{{submitObj.mobile_no}}</span></p>
+                        <p class="text-muted font-13"><strong>Designation :</strong> <span class="m-l-15">{{submitObj.designation}}</span></p>
+                        <p class="text-muted font-13"><strong>Date Of Birth :</strong> <span class="m-l-15">{{submitObj.dobs}}</span></p>
+                        <p class="text-muted font-13"><strong>Date of Joining :</strong><span class="m-l-15">{{submitObj.dojs}}</span></p>
+                        <!--<p class="text-muted font-13"><strong>Blood Group :</strong> <span class="m-l-15">{{submitObj.blood_group}}</span></p>-->
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-md-12" *ngIf="resData == 'update-profile'">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Update Profile</h4>
+
+                <form id="profileupdateBasic" #catForm="ngForm">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Name *</label>
+                                <input type="text" name="name" placeholder="name" class="form-control" id="name" [(ngModel)]="submitObj.name" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="name_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Father's Name *</label>
+                                <input type="text" name="father_name" placeholder="father_name" class="form-control" id="father_name" [(ngModel)]="submitObj.father_name" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="father_name_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Date of Birth *</label>
+                                <input type="text" name="dob" placeholder="" class="form-control" id="dob" [(ngModel)]="submitObj.dob" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="dob_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Mobile Number *</label>
+                                <input type="text" name="mobile_no" placeholder="" class="form-control" id="mobile_no" [(ngModel)]="submitObj.mobile_no" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="mobile_no_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Blood Group *</label>
+                                <input type="text" name="blood_group" placeholder="" class="form-control" id="blood_group" [(ngModel)]="submitObj.blood_group" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="blood_group_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group text-left m-b-0">
+                                <button class="btn btn-primary waves-effect waves-light" (click)="updateSubmit()" type="button">
+                                    Submit
+                                </button>
+                                <button type="reset" class="btn btn-warning waves-effect waves-light m-l-5">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-md-12" *ngIf="resData == 'change-password'">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Chyange Password</h4>
+
+                <form id="updatePassword" #catForm="ngForm">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">New Password *</label>
+                                <input type="password" name="new_password" placeholder="new password" class="form-control" id="new_password" [(ngModel)]="passwordObj.new_password" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="new_password_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Confirm Password *</label>
+                                <input type="password" name="confirm_password" placeholder="confirm password" class="form-control" id="confirm_password" [(ngModel)]="passwordObj.confirm_password" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="confirm_password_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group text-left m-b-0">
+                                <button class="btn btn-primary waves-effect waves-light" (click)="updatePasswordSubmit()" type="button">
+                                    Submit
+                                </button>
+                                <button type="reset" class="btn btn-warning waves-effect waves-light m-l-5">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>Submission Successful !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="errorsubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-danger">
+                            <strong>data is not valid !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

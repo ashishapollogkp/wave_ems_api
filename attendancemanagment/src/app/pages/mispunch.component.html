@@ -1,0 +1,154 @@
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Attendance Request</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-3">
+    </div>
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <form id="profileupdateBasic" #catForm="ngForm">
+                    <div class="row">
+                        <div class="col-xl-12" *ngIf="responseData == 'Admin'">
+                            <div class="form-group">
+                                <label for="userName">Employee Id</label>
+                                <input type="text" name="employee_code" placeholder="Employee id" class="form-control single-line ui-autocomplete-input" id="employee_code" [(ngModel)]="sendQuery.employee_code" checkMandatory="true" (ngModelChange)="typeHeadSubmit();" autocomplete="off" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="employee_code_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Date*</label>
+                                <input type="text" name="mispunchdate" placeholder="dd/mm/yyyy" class="form-control" id="mispunchdate" checkMandatory="true" autocomplete="off" (focus)="onFocus()" readonly>
+                                <span class="ng-hide displayError" id="mispunchdate_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">                           
+                            <label for="userName">Check In Time *</label>
+                            <div class="row">                                
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Hours</label>
+                                        <select class="form-control" name="in_hourse" id="in_hourse" [(ngModel)]="sendQuery.in_hourse" checkMandatory="true" (focus)="onFocus()">
+                                            <option value="00">00</option>
+                                            <option *ngFor="let item of hrs let i=index " value="{{item.hrs_mint}}">{{item.hrs_mint}}</option>
+                                        </select>
+                                        <span class="ng-hide displayError" id="in_hourse_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Minutes</label>
+                                        <select class="form-control" name="in_minute" id="in_minute" [(ngModel)]="sendQuery.in_minute" checkMandatory="true" (focus)="onFocus()">
+                                            <option value="00">00</option>
+                                            <option *ngFor="let item of mint let i=index " value="{{item.hrs_mint}}">{{item.hrs_mint}}</option>
+                                        </select>
+                                        <span class="ng-hide displayError" id="in_minute_error"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <label for="userName">Check Out Time *</label>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Hours</label>
+                                        <select class="form-control" name="out_hourse" id="out_hourse" [(ngModel)]="sendQuery.out_hourse" checkMandatory="true" (focus)="onFocus()">
+                                            <option value="00">00</option>
+                                            <option *ngFor="let item of hrs let i=index " value="{{item.hrs_mint}}">{{item.hrs_mint}}</option>
+                                        </select>
+                                        <span class="ng-hide displayError" id="out_hourse_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Minutes</label>
+                                        <select class="form-control" name="out_minute" id="out_minute" [(ngModel)]="sendQuery.out_minute" checkMandatory="true" (focus)="onFocus()">
+                                            <option value="00">00</option>
+                                            <option *ngFor="let item of mint let i=index " value="{{item.hrs_mint}}">{{item.hrs_mint}}</option>
+                                        </select>
+                                        <span class="ng-hide displayError" id="out_minute_error"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Shift</label>
+                                <select class="form-control" name="shift" id="shift" [(ngModel)]="sendQuery.shift" (focus)="onFocus()" checkMandatory="true">
+                                    <option value=""></option>
+                                    <option *ngFor="let item of shiftData let i=index" value="{{item.shift_code}}">{{item.shift_name}}</option>
+                                </select>
+                                <span class="ng-hide displayError" id="shift_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Reason</label>
+                                <textarea class="form-control" name="leave_type" id="reason" [(ngModel)]="sendQuery.reason" checkMandatory="true" (focus)="onFocus()"></textarea>
+                                <span class="ng-hide displayError" id="reason_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group text-left m-b-0">
+                                <button *ngIf="setCreate" class="btn btn-primary waves-effect waves-light" (click)="createSubmit()" type="button">
+                                    Submit
+                                </button>
+                                <button type="reset" class="btn btn-warning waves-effect waves-light m-l-5">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- end col -->
+    <!-- Modal -->
+    <div class="modal fade" id="sendquery" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header1">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Send Query</h4>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <!--  -->
+        <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="text-success">
+                                <strong>Submission Successful !!!</strong>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end row -->

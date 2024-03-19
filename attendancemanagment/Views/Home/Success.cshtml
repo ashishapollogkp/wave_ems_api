@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Success";
+}
+<!DOCTYPE html>
+<html class="html">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hero Moter Cycle">
+    <meta name="author" content="Skylabs Solutions India PVT LTD">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" type="image/x-icon" href="@System.Configuration.ConfigurationManager.AppSettings["baseurl"]/Images/favicon.png">
+    @Styles.Render("~/Content/hmc")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background: transparent;">
+    <div class="text-center logo-alt-box" style="margin-top: 0;padding-top: 50px;">
+        <a href="/" class="logo"><img style="width: 10%;" src="@System.Configuration.ConfigurationManager.AppSettings["baseurl"]/Images/wave-infra.png" /></a>
+    </div>
+    <div class="wrapper-page">
+        <div class="m-t-30 card card-body">
+            <div class="text-center">
+                <h4 class="text-uppercase font-bold">Success !!</h4>
+            </div>
+            <div class="p-2 text-center">
+                <i class="zmdi zmdi-email-open text-success" style="font-size: 48px;"></i>
+                <p class="text-muted font-13 m-t-20"> Thanks for approve/reject !!!</p>
+            </div>
+        </div>
+        <!-- end card-box -->
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p class="text-muted">Return to <a href="@System.Configuration.ConfigurationManager.AppSettings["baseurl"]" class="text-primary m-l-5"><b>Sign in</b></a></p>
+            </div>
+        </div>
+    </div>
+    <!-- end wrapper page -->
+    <!-- end wrapper page -->
+
+    @Scripts.Render("~/bundles/hmcjs")
+
+</body>
+</html>

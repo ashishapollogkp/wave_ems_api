@@ -1,0 +1,155 @@
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Dashboard</h4>
+    </div>
+</div>
+
+<div class="row" id="adminid" style="display: none;">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="dropdown-item">Action</a></li>
+                        <li><a href="#" class="dropdown-item">Another action</a></li>
+                        <li><a href="#" class="dropdown-item">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="#" class="dropdown-item">Separated link</a></li>
+                    </ul>
+                </div>
+                <div id="EmpPeiChart"></div>
+                
+            </div>
+        </div>
+    </div><!-- end col-->
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="dropdown-item">Action</a></li>
+                        <li><a href="#" class="dropdown-item">Another action</a></li>
+                        <li><a href="#" class="dropdown-item">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="#" class="dropdown-item">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <div id="ApplyLeaveinfo"></div>
+            </div>
+        </div>
+    </div><!-- end col-->
+    <!-- end col -->
+    <div class="col-xl-12"></div>
+</div>
+<!-- end row -->
+
+<div class="row" *ngIf="responseData.role !='Administrator' && responseData.role !='Admin'">
+    <div class="col-xl-3 col-md-6">
+        <div class="text-center card card-holiday">
+            <div class="card-body">
+                <div>
+                    <label for="onUploadChange">
+                        <!--<input type="file" id="onUploadChange" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" style="display: none;" />-->                        
+                        <img *ngIf="empProfileData.feature_image" src="../Images/{{empProfileData.feature_image}}" class="rounded-circle thumb-lg img-thumbnail m-b-10" alt="{{empProfileData.name}}" />
+                        <img *ngIf="!empProfileData.feature_image" src="../Images/avatar-1.jpg" class="rounded-circle thumb-lg img-thumbnail m-b-10" alt="{{empProfileData.name}}" />
+                    </label>
+                    <p class="text-muted font-13 mb-4">
+                        Hi I'm {{empProfileData.name}}
+                    </p>
+
+                    <div class="text-left">
+                        <h6 class="page-title">Personal Details</h6>
+                        <p class="text-muted font-12 text-capitalize"><strong>Employee Id :</strong> <span class="m-l-15">{{empProfileData.employee_id}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Name :</strong> <span class="m-l-15">{{empProfileData.name}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Designation :</strong> <span class="m-l-15">{{empProfileData.designation}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Department :</strong> <span class="m-l-15">{{empProfileData.department}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Date Of Birth :</strong> <span class="m-l-15">{{empProfileData.dobs}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Date Of Joining :</strong> <span class="m-l-15">{{empProfileData.dojs}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Father's Name :</strong> <span class="m-l-15">{{empProfileData.father_name}}</span></p>
+
+                        <h6 class="page-title">Communication</h6>
+                        <p class="text-muted font-12 text-capitalize"><strong>Mobile :</strong><span class="m-l-15">{{empProfileData.mobile_no}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Email :</strong> <span class="m-l-15">{{empProfileData.email}}</span></p>
+                        <h6 class="page-title">Reportings</h6>
+                        <p class="text-muted font-12 text-capitalize"><strong>Employee Id :</strong> <span class="m-l-15">{{empProfileData.reporting_to}}</span></p>
+                        <p class="text-muted font-12 text-capitalize"><strong>Name :</strong> <span class="m-l-15">{{empProfileData.reporting_to_name}}</span></p>
+                        <h6 class="page-title">Location</h6>
+                        <p class="text-muted font-12 text-capitalize mb-0"><strong>Payroll Area :</strong> <span class="m-l-15">{{empProfileData.company_name}}</span></p>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xl-5 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="dropdown-item">Action</a></li>
+                        <li><a href="#" class="dropdown-item">Another action</a></li>
+                        <li><a href="#" class="dropdown-item">Something else here</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="#" class="dropdown-item">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <!--<div class="row text-center m-t-30">
+                    <div class="col-4">
+                        <h3 data-plugin="counterup">{{donatActuals}}</h3>
+                        <p class="text-muted">Total Leave</p>
+                    </div>
+                    <div class="col-4">
+                        <h3 data-plugin="counterup">{{donatActuals1}}</h3>
+                        <p class="text-muted">Availed</p>
+                    </div>
+                    <div class="col-4">
+                        <h3 data-plugin="counterup">{{donatActuals2}}</h3>
+                        <p class="text-muted">Balance</p>
+                    </div>
+                </div>-->
+                <div id="animating-donut" style="height: 400px"></div>
+            </div>
+        </div>
+    </div><!-- end col-->
+    <div class="col-xl-4 col-md-12">
+        <div class="card card-holiday">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Holiday Calander</h4>
+                <div>
+                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Holiday</th>
+                                <th style="width: 100px;">Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let item of responseData.holidays let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.holiday_date | date : 'dd/MM/yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- end col-->
+</div>
+<!-- end row -->

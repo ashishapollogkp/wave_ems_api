@@ -1,0 +1,177 @@
+﻿<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">{{employeeData.name}} ({{employeeData.employee_id}})</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Leave Summary</h4>
+
+                <div id="performancebarchart"></div>
+
+                <div class="table-responsive pad-t-15">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="text-center">
+                                <th colspan="4"> Leave Summary</th>
+                            </tr>
+                            <tr class="text-center">
+                                <th>Leave</th>
+                                <th>Opening</th>
+                                <th>Availed</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center">
+                            <td> {{responseData.bgNames[1]}}</td>
+                            <td> {{responseData.targets[1]}}</td>
+                            <td> {{responseData.actuals[1]}}</td>
+                            <td> {{responseData.balance[1]}}</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td> {{responseData.bgNames[2]}}</td>
+                            <td> {{responseData.targets[2]}}</td>
+                            <td> {{responseData.actuals[2]}}</td>
+                            <td> {{responseData.balance[2]}}</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td> {{responseData.bgNames[3]}}</td>
+                            <td> {{responseData.targets[3]}}</td>
+                            <td> {{responseData.actuals[3]}}</td>
+                            <td> {{responseData.balance[3]}}</td>
+                        </tr>
+                        <tr class="text-center ">
+                            <td> {{responseData.bgNames[0]}}</td>
+                            <td> {{responseData.targets[0]}}</td>
+                            <td> {{responseData.actuals[0]}}</td>
+                            <td> {{responseData.balance[0]}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30" *ngIf="submitObj.from_date == null">My Attendance 1<sup>th</sup> {{monthName}} {{year}} to {{monthDays}}<sup>th</sup> {{monthName}} {{this.year}}</h4>
+                <h4 class="header-title m-t-0 m-b-30" *ngIf="submitObj.from_date != null">My Attendance {{submitObj.from_date}} to {{submitObj.to_date}}</h4>
+                <form id="filtersubmit" class="m-t-15" #catForm="ngForm">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3">
+                            <label for="status">Filters</label>
+                            <select class="form-control" name="status" [(ngModel)]="status_filter.status" (ngModelChange)="ApplyFilter()" (focus)="onFocus()" id="status_filter">
+                                <option value="">All</option>
+                                <option value="P">Present</option>
+                                <option value="MP">Mispunch</option>
+                                <option value="L">Late</option>
+                                <option value="E">Early</option>
+                                <option value="AB">Absent</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 col-md-4">
+                            <label for="status" style="visibility: hidden;">Filter:</label>
+                            <input type="text" id="from_date" class="form-control" name="from_date" [(ngModel)]="submitObj.from_date" checkMandatory="true" (focus)="onFocus()" placeholder="From date" readonly>
+                            <span class="ng-hide displayError" id="from_date_error"></span>
+                        </div>
+                        <div class="col-sm-3 col-md-3">
+                            <label for="status" style="visibility: hidden">Filter:</label>
+                            <input type="text" id="to_date" class="form-control" name="to_date" [(ngModel)]="submitObj.to_date" checkMandatory="true" (focus)="onFocus()" placeholder="To date" readonly>
+                            <span class="ng-hide displayError" id="to_date_error"></span>
+                        </div>
+                        <div class="col-sm-1 col-md-1">
+                            <label for="status" style="visibility: hidden">Filter:</label>
+                            <button type="button" class="btn btn-danger" (click)="ApplyFilter();">Apply</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="table-responsive m-t-20">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Day</th>
+                                <th>In Time</th>
+                                <th>Out Time</th>
+                                <th>Shift</th>
+                                <th>Status</th>
+                                <th>Total Hrs</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="attendanceList.length > 0">
+                            <tr *ngFor="let item of attendanceList let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.sdate}}</td>
+                                <td>{{item.day}}</td>
+                                <td>{{item.in_time}}</td>
+                                <td>{{item.out_time}}</td>
+                                <td>{{item.shift}}</td>
+                                <td>
+                                    <span class="badge badge-purple" *ngIf="item.status == 'H'">{{item.status}}</span>
+                                    <span class="badge badge-purple" *ngIf="item.status == 'WO'">{{item.status}}</span>
+                                    <span class="badge badge-purple" *ngIf="item.status == 'CO'">{{item.status}}</span>
+                                    <span class="badge badge-pink" *ngIf="item.status == 'HD'">{{item.status}}</span>
+                                    <span class="badge badge-success" *ngIf="item.status == 'P'">{{item.status}}</span>
+                                    <span class="badge badge-success" *ngIf="item.status == 'EL'">{{item.status}}</span>
+                                    <span class="badge badge-success" *ngIf="item.status == 'LWP'">{{item.status}}</span>
+                                    <span class="badge badge-success" *ngIf="item.status == 'PL'">{{item.status}}</span>
+                                    <span class="badge badge-success" *ngIf="item.status == 'Sht. Leave'">{{item.status}}</span>
+                                    <span class="badge badge-success" *ngIf="item.status == 'D'">{{item.status}}</span>
+                                    <span class="badge badge-success" *ngIf="item.status == 'CL'">{{item.status}}</span>
+                                    <span class="badge badge-success" *ngIf="item.status == 'SL'">{{item.status}}</span>
+                                    <span class="badge badge-success" *ngIf="item.status == 'R'">{{item.status}}</span>
+                                    <span class="badge badge-warning" *ngIf="item.status == 'I'">{{item.status}}</span>
+                                    <span class="badge badge-danger" *ngIf="item.absent == 'AB'">{{item.absent}}</span>
+                                    <span class="badge badge-danger" *ngIf="item.mis == 'MP'">{{item.mis}}</span>
+                                    <span *ngIf="item.late == 'L'" class="badge badge-danger">{{item.late}}</span>
+                                    <span *ngIf="item.early == 'E'" class="badge badge-danger">{{item.early}}</span>
+                                    <span class="badge badge-danger" *ngIf="item.status == 'A'">{{item.status}}</span>
+                                    <span class="badge badge-danger" *ngIf="item.mis == 'A'">{{item.mis}}</span>
+                                    <span class="badge badge-danger" *ngIf="item.absent == 'A'">{{item.absent}}</span>
+                                    <span *ngIf="item.early == 'A'" class="badge badge-danger">{{item.early}}</span>
+                                </td>
+                                <td>{{item.total_hrs}}</td>
+                            </tr>
+
+                        </tbody>
+                        <tbody *ngIf="attendanceList.length == 0">
+                            <tr class="text-center">
+                                <td colspan="9"> <strong>No Data Found</strong> </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- end col -->
+    
+</div>
+<!-- end row -->
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>Submission Successful !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->

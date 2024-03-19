@@ -1,0 +1,257 @@
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Employee Leave Request</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+                </div>
+
+                <div id="performancebarchart"></div>
+
+
+                <div class="table-responsive pad-t-15">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="text-center">
+                                <th colspan="4"> Leave Summary</th>
+                            </tr>
+                            <tr class="text-center">
+                                <th>Leave</th>
+                                <th>Opening</th>
+                                <th>Availed</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center">
+                                <td> {{responseData.bgNames[1]}}</td>
+                                <td> {{responseData.targets[1]}}</td>
+                                <td> {{responseData.actuals[1]}}</td>
+                                <td> {{responseData.balance[1]}}</td>
+                            </tr>
+                            <tr class="text-center">
+                                <td> {{responseData.bgNames[2]}}</td>
+                                <td> {{responseData.targets[2]}}</td>
+                                <td> {{responseData.actuals[2]}}</td>
+                                <td> {{responseData.balance[2]}}</td>
+                            </tr>
+                            <tr class="text-center">
+                                <td> {{responseData.bgNames[3]}}</td>
+                                <td> {{responseData.targets[3]}}</td>
+                                <td> {{responseData.actuals[3]}}</td>
+                                <td> {{responseData.balance[3]}}</td>
+                            </tr>
+                            <tr class="text-center ">
+                                <td> {{responseData.bgNames[0]}}</td>
+                                <td> {{responseData.targets[0]}}</td>
+                                <td> {{responseData.actuals[0]}}</td>
+                                <td> {{responseData.balance[0]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div><!-- end col-->
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Leave Request</h4>
+
+                <form id="profileupdateBasic" #catForm="ngForm">
+                    <div class="row">
+                        <div class="col-xl-12" *ngIf="responseData.role == 'Admin'">
+                            <div class="form-group">
+                                <label for="userName">Employee Id</label>
+                                <input type="text" name="employee_code" placeholder="Employee id" class="form-control single-line ui-autocomplete-input" id="employee_code" [(ngModel)]="submitObj.employee_code" checkMandatory="true" (ngModelChange)="typeHeadSubmit();" autocomplete="off" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="employee_code_error"></span>
+                            </div>
+                        </div>
+                        <!--<div class="col-xl-12" *ngIf="responseData.role == 'Admin'">
+                            <div class="form-group">
+                                <label for="userName">Employee Id<span class="required">*</span></label>
+                                <input class="form-control" name="employee_code" id="leave_type" [(ngModel)]="submitObj.employee_code" checkMandatory="true" (focus)="onFocus()" />
+                                <span class="ng-hide displayError" id="employee_code_error"></span>
+                            </div>
+                        </div>-->
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Leave Type<span class="required">*</span></label>
+                                <select class="form-control" name="leave_type" id="leave_type" [(ngModel)]="submitObj.leave_type" (change)="getDurationType();" checkMandatory="true" (focus)="onFocus()">
+                                    <option value=""></option>
+                                    <option *ngFor="let type of leaveType let i=index" value="{{type.id}}">{{type.key_description}}</option>
+                                </select>
+                                <span class="ng-hide displayError" id="leave_type_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12" *ngIf="setLeaveTypeFlag">
+                            <div class="form-group">
+                                <label for="userName">Duration Type<span class="required">*</span></label>
+                                <select class="form-control" name="duration_type" id="duration_type" [(ngModel)]="submitObj.duration_type" checkMandatory="true" (focus)="onFocus()">
+                                    <option value=""></option>
+                                    <option *ngFor="let type of durationType let i=index" value="{{type.id}}">{{type.key_description}}</option>
+                                </select>
+                                <span class="ng-hide displayError" id="duration_type_error"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">From Date<span class="required">*</span></label>
+                                <input type="text" name="from_date" placeholder="dd/mm/yyyy" class="form-control" readonly id="from_date" [(ngModel)]="submitObj.from_date" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="from_date_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">To Date<span class="required">*</span></label>
+                                <input type="text" name="to_date" placeholder="dd/mm/yyyy" class="form-control" readonly id="to_date" [(ngModel)]="submitObj.to_date" checkMandatory="true" (focus)="onFocus()">
+                                <span class="ng-hide displayError" id="to_date_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6" *ngIf="setLeaveTypeFlag && submitObj.leave_type == '40'">
+                            <label for="userName">From Time</label>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Hours</label>
+                                        <select class="form-control" name="from_hourse" id="from_hourse" [(ngModel)]="submitObj.from_hourse" (focus)="onFocus()">
+                                            <option *ngFor="let item of hrsList let i=index" value="{{item.hrs_mint}}">{{item.hrs_mint}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Minutes</label>
+                                        <select class="form-control" name="from_minute" id="from_minute" [(ngModel)]="submitObj.from_minute" (focus)="onFocus()">
+                                            <option *ngFor="let item of mintList let i=index" value="{{item.hrs_mint}}">{{item.hrs_mint}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6" *ngIf="setLeaveTypeFlag && submitObj.leave_type == '40'">
+                            <label for="userName">To Time</label>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Hours</label>
+                                        <select class="form-control" name="to_hourse" id="to_hourse" [(ngModel)]="submitObj.to_hourse" (focus)="onFocus()">
+                                            <option *ngFor="let item of hrsList let i=index" value="{{item.hrs_mint}}">{{item.hrs_mint}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Minutes</label>
+                                        <select class="form-control" name="to_minute" id="to_minute" [(ngModel)]="submitObj.to_minute" (focus)="onFocus()">
+                                            <option *ngFor="let item of mintList let i=index" value="{{item.hrs_mint}}">{{item.hrs_mint}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Shift<span class="required">*</span></label>
+                                <select class="form-control" name="shift" id="shift" [(ngModel)]="submitObj.shift" (focus)="onFocus()" checkMandatory="true">
+                                    <option value=""></option>
+                                    <option *ngFor="let item of shiftData let i=index" value="{{item.shift_code}}">{{item.shift_name}}</option>
+                                </select>
+                                <span class="ng-hide displayError" id="shift_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label for="userName">Reason<span class="required">*</span></label>
+                                <textarea class="form-control" name="leave_type" id="reason" [(ngModel)]="submitObj.reason" checkMandatory="true" (focus)="onFocus()"></textarea>
+                                <span class="ng-hide displayError" id="reason_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="form-group text-left m-b-0">
+                                <button *ngIf="setCreate" class="btn btn-primary waves-effect waves-light" (click)="createSubmit()" type="button">
+                                    Submit
+                                </button>
+                                <!--<button *ngIf="setUpdate" class="btn btn-primary waves-effect waves-light" (click)="updateSubmit()" type="button">
+                                    Update
+                                </button>-->
+                                <button type="reset" class="btn btn-warning waves-effect waves-light m-l-5">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- end col-->
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Calander</h4>
+                <div id="calendar"></div>                
+            </div>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->
+<div class="row">
+    <div class="col-xl-4">
+
+    </div><!-- end col -->
+
+</div>
+<!-- end row -->
+
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>Submission Successful !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="deletesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-danger">
+                            <strong>{{errorData.alert}} !!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

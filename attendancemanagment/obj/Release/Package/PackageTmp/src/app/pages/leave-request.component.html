@@ -1,0 +1,159 @@
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Approval Leave Request</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card table-responsive">
+            <div class="card-body">
+                <!--<div class="dropdown float-right">
+                    <a href="/Administrator/ExportExcel?name=AllLeave" class="dropdown-toggle1 card-drop1 btn btn-primary" title="download employee master">
+                        All Leave <i class="fa fa-download"></i>
+                    </a>
+                    <a href="/Administrator/ExportExcel?name=PendingLeave" class="dropdown-toggle1 card-drop1 btn btn-pink" title="download employee master">
+                        Pending Leave <i class="fa fa-download"></i>
+                    </a>
+                    <a href="/Administrator/ExportExcel?name=ApproveLeave" class="dropdown-toggle1 card-drop1 btn btn-success" title="download employee master">
+                        Approve Leave <i class="fa fa-download"></i>
+                    </a>
+                    <a href="/Administrator/ExportExcel?name=RejectLeave" class="dropdown-toggle1 card-drop1 btn btn-danger" title="download employee master">
+                        Reject Leave <i class="fa fa-download"></i>
+                    </a>
+                </div>-->
+                <h4 style="visibility: hidden;" class="header-title m-t-0">Daily Sales</h4>
+                <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer m-t-40">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="datatable_length">
+                                <label>
+                                    Show
+                                    <select name="datatable_length" [(ngModel)]="pageSize" (ngModelChange)="onChageFilter()" class="custom-select custom-select-sm form-control form-control-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> entries
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div id="datatable_filter" class="dataTables_filter">
+                                <label>
+                                    Search:
+                                    <input type="search" class="form-control form-control-sm" (ngModelChange)="searchSubmit();" [(ngModel)]="submitObj.search_result" placeholder="" aria-controls="datatable">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Apply date</th>
+                                    <th>Name</th>
+                                    <th>Leave Type</th>
+                                    <th>Duration Type</th>
+                                    <th>From Date</th>
+                                    <th>To Date</th>
+                                    <th>Reason</th>
+                                    <th>Approve By</th>
+                                    <th>Status</th>
+                                    <th style="width: 177px;">Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody *ngIf="responseData.length > 0">
+                                <tr *ngFor="let item of responseData let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.applydate}} </td>
+                                    <td>{{item.apply_by_name}} ({{item.employee_id}})</td>
+                                    <td>{{item.leave_code}} </td>
+                                    <td>{{item.duration_code}} </td>
+                                    <td>{{item.fromdate}}</td>
+                                    <td>{{item.todate}}</td>
+                                    <td>{{item.reason}}</td>
+                                    <td>{{item.assign_by_name}} ({{item.assign_by}})</td>
+                                    <td>
+                                        <span *ngIf="item.status == 'Pending'" class="badge badge-warning">{{item.status}}</span>
+                                        <span *ngIf="item.status == 'Approved'" class="badge badge-success">{{item.status}}</span>
+                                        <span *ngIf="item.status == 'Rejected'" class="badge badge-danger">{{item.status}}</span>
+                                    </td>
+                                    <td>
+                                        <span *ngIf="item.status == 'Pending'" class="badge badge-warning cursor-pointer" (click)="statusSubmit(i, 'Approved')">Approve</span>
+                                        <span *ngIf="item.status == 'Pending'" class="badge badge-success dropdown-toggle1 cursor-pointer" (click)="statusSubmit(i, 'Rejected')">Reject</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody *ngIf="responseData.length == 0">
+                                <tr>
+                                    <td class="text-center" colspan="11">No Data Found</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                            <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                <ul class="pagination float-right">
+                                    <li class="paginate_button page-item previous" *ngIf="setPageNo" id="datatable_previous"><a href="javascript:void(0)" (click)="previousSubmit()" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                    <li class="paginate_button page-item next" *ngIf="setPageNoNext" id="datatable_next"><a href="javascript:void(0)" (click)="nextSubmit()" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>Submission Successful !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="deletesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>You want to delete this employee !!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm">Yes</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

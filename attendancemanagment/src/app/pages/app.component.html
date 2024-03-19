@@ -1,0 +1,108 @@
+<!-- Header Part -->
+
+<!-- Navigation Bar-->
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <div class="topbar-left">
+              <a routerLink="" routerLinkActive="active" href="javascript:void(0);" class="logo" style="width: 100px;">
+                <!-- ISAC<span>PL</span> -->
+                <span><img src="../Images/wave-infra.png" style="width: 58%;" alt="logo"></span>
+              </a>
+            </div>
+            <!-- End Logo container-->
+            <div class="navbar-custom navbar-left">
+                <div id="navigation">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
+                        <li>
+                            <a routerLink="" routerLinkActive="active" href="javascript:void(0);">
+                                <span><i class="zmdi zmdi-view-dashboard"></i></span>
+                                <span> My Dashboard </span>
+                            </a>
+                        </li>
+                        <li class="has-submenu" *ngFor="let item of employeeDetail.menuList let i=index">
+                            <a href="javascript:void(0)" routerLink="{{item.url}}"> <span><i class="{{item.icons}}"></i></span><span> {{item.name}} </span> </a>
+                            <ul class="submenu" *ngIf="item.sub_menu.length > 0">
+                                <li *ngFor="let item2 of item.sub_menu let j=index"><a routerLink="{{item2.url}}" routerLinkActive="active" href="javascript:void(0);"><i class="{{item2.icons}}"></i> {{item2.name}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- End navigation menu  -->
+                </div>
+            </div>
+
+            <div class="menu-extras">
+                <ul class="nav navbar-right float-right list-inline">
+                    <li class="list-inline-item" style="margin-right: -1.5rem;">
+                        <a href="javascript:void(0);" class="right-bar-toggle1" style="color: #fe6271 !important;">
+                            {{employeeDetail.name}}
+                        </a>
+                    </li>
+                    <li class="dropdown user-box list-inline-item">
+                        <a class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" href="#">
+
+                            <img *ngIf="employeeDetail.feature_image != null" src="../Images/{{employeeDetail.feature_image}}" id="img" class="rounded-circle user-img" alt="{{employeeDetail.name}}">
+                            <img *ngIf="employeeDetail.feature_image == null" src="../Images/avatar-1.jpg" class="rounded-circle user-img" alt="{{employeeDetail.name}}">
+                            <div class="user-status away"><i class="zmdi zmdi-dot-circle"></i></div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a routerLink="profile" routerLinkActive="active" href="javascript:void(0)" class="dropdown-item"><i class="ti-user m-r-5"></i> Profile</a></li>
+                            <li><a href="javascript:$('#logOffForm').submit()" class="dropdown-item"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+<!-- End Navigation Bar-->
+
+<!-- body part -->
+<div class="wrapper">
+    <div class="container-fluid">
+        <!-- Loads Routes Angular Templates -->
+        <router-outlet></router-outlet>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="pull-none mo-mb-10">
+                        2021 - 2022 &copy; Skylabs Employee Management System
+                    </div>
+                </div>
+                <!--<div class="col-sm-6">
+                    <ul class="float-right list-inline m-b-0 pull-none" style="visibility: hidden">
+                        <li class="list-inline-item">
+                            <a href="#">About</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Help</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+</div>
+<!--end body part -->

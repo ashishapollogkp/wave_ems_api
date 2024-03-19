@@ -1,0 +1,170 @@
+<!-- Page-Title -->
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="nav nav-pills nav-pills-custom display-xs-none float-right m-t-25">
+      <li class="nav-item">
+        <a class="nav-link view_id active" href="javascript:void(0);" (click)="changeTabSubmit('view_id');">View Role</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link add_new" href="javascript:void(0);" (click)="changeTabSubmit('add_new');">Add New Role</a>
+      </li>
+    </ul>
+    <h4 class="page-title">Role Master</h4>
+    <!-- sample modal content -->
+  </div>
+</div>
+<div class="row">
+  <div class="col-xl-12" *ngIf="tabChange == 'view_id'">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="header-title m-t-0 m-b-30">Role</h4>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="keyValueList.length > 0">
+              <tr *ngFor="let item of keyValueList let i=index">
+                <td>{{i+1}}</td>
+                <td>{{item.key_code}}</td>
+                <td>{{item.key_description}}</td>
+                <td>{{item.pay_code}}</td>
+                <td class="actions">
+                  <a href="javascript:void(0)" (click)="editSubmit(item.id)" class="btn2 btn-icon waves-effect btn-success m-b-5"><i class="fa fa-pencil"></i></a>
+                  <a href="javascript:void(0)" (click)="deleteSubmit(item.id)" class="btn2 btn-icon waves-effect btn-danger m-b-5"><i class="fa fa-trash-o"></i></a>
+                </td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="keyValueList.length == 0">
+              <tr class="text-center">
+                <td colspan="5"> <strong>No Data Found</strong> </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <!--<div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+          <ul class="pagination">
+            <li class="paginate_button page-item previous disabled" id="datatable_previous"><a href="javascript:void(0);" *ngIf="setPageNoNext" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+            <li class="paginate_button page-item next" id="datatable_next"><a href="javascript:void(0);" *ngIf="setPageNo" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+          </ul>
+        </div>-->
+      </div>
+    </div>
+  </div><!-- end col -->
+  <div class="col-xl-12" *ngIf="tabChange == 'add_new'">
+    <div class="card">
+      <div class="card-body">
+
+
+        <form id="profileupdateBasic" #catForm="ngForm">
+          <div class="row">
+
+            <div class="col-xl-6">
+              <h4 class="header-title m-t-0 m-b-30">Base Details</h4>
+              <div class="form-group">
+                <label for="userName">Role Code</label>
+                <input type="text" name="key_code" placeholder="Ex. HR" class="form-control" id="key_code" [(ngModel)]="submitObj.key_code" checkMandatory="true" (focus)="onFocus()">
+                <span class="ng-hide displayError" id="key_code_error"></span>
+              </div>
+              <div class="form-group">
+                <label for="userName">Role Name</label>
+                <input type="text" name="key_description" placeholder="Ex. Human Resource" class="form-control" id="key_description" [(ngModel)]="submitObj.key_description" checkMandatory="true" (focus)="onFocus()">
+                <span class="ng-hide displayError" id="key_description_error"></span>
+              </div>
+              <div class="form-group">
+                <label for="userName">Company<span class="require">*</span></label>
+                <select class="form-control" name="pay_code" id="pay_code" [(ngModel)]="submitObj.pay_code" checkMandatory="true" (focus)="onFocus()">
+                  <option value=""></option>
+                  <option *ngFor="let item of companyList let i=index" value="{{item.company_code}}">{{item.name}}</option>
+                </select>
+
+                <span class="ng-hide displayError" id="pay_code_error"></span>
+              </div>
+              <div class="form-group text-left m-b-0">
+                <button *ngIf="setCreate" class="btn btn-primary waves-effect waves-light" (click)="CreateSubmit()" type="button">
+                  Submit
+                </button>
+                <button *ngIf="setUpdate" class="btn btn-primary waves-effect waves-light" (click)="updateSubmit()" type="button">
+                  Update
+                </button>
+                <button type="reset" class="btn btn-warning waves-effect waves-light m-l-5">
+                  Reset
+                </button>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <h4 class="header-title m-t-0 m-b-30">Menu Details</h4>
+              <div class="form-group">
+                <label *ngFor="let item of menMenuList let i=index" class="form-control2">
+                  <input type="checkbox" value="{{item.id}}" (change)="onChange(item.id,$event)" [checked]="item.checked">
+                  {{item.name}}
+                  <!--<label class="form-group1" *ngIf="item.sub_menu.length > 0">
+                      <label *ngFor="let item2 of item.sub_menu let j=index" class="form-control1">
+                          <input type="checkbox" value="{{item2.id}}" (change)="onChange(item2.id,$event)" [checked]="item2.checked">
+                          {{item2.name}}
+                      </label>
+                  </label>-->
+
+                </label>
+                <br>
+                <!--<label style="font-size:18px">{{menuValues}}</label>-->
+                <label style="font-size:18px">({{menuCount}})</label>
+                <!--<label style="font-size:18px;color: red">{{errorMsg}}</label>-->
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div><!-- end col -->
+
+</div>
+<!-- end row -->
+
+<div class="row">
+  <!--  -->
+  <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="text-center">
+            <div class="text-success">
+              <strong>Submission Successful !!!</strong>
+            </div>
+            <div>
+              <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <!--  -->
+  <div class="modal fade" id="deletesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="text-center">
+            <div class="text-success">
+              <strong>You want to delete this role !!</strong>
+            </div>
+            <div>
+              <button type="button" class="btn btn-success btn-sm" (click)="deleteRow(targetindex)">Yes</button>
+              <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

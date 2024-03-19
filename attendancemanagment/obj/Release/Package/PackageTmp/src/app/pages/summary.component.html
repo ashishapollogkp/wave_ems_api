@@ -1,0 +1,193 @@
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <ul class="nav nav-pills nav-pills-custom display-xs-none float-right m-t-25">
+            <li class="nav-item">
+                <a class="nav-link viewLeave active" href="javascript:void(0);" (click)="changeTabSubmit('viewLeave');">Leave Request Summary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link viewMispunch" href="javascript:void(0);" (click)="changeTabSubmit('viewMispunch');">Mispunch Request Summary</a>
+            </li>
+        </ul>
+        <h4 class="page-title">Approval Status</h4>
+    </div>
+</div>
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-xl-12" *ngIf="tabChange == 'viewLeave'">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Leave Request Status</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Apply date</th>
+                                <th>Name</th>
+                                <th>Leave Type</th>
+                                <th>Duration Type</th>
+                                <th>From Date</th>
+                                <th>To Date</th>
+                                <th>Reason</th>
+                                <th>Approve By</th>
+                                <th>Status</th>                                
+                                <th style="width: 100px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="responseData.length > 0">
+                            <tr *ngFor="let item of responseData let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.applydate}} </td>
+                                <td>{{item.apply_by_name}} ({{item.employee_id}})</td>
+                                <td>{{item.leave_code}} </td>
+                                <td>{{item.duration_code}} </td>
+                                <td>{{item.fromdate}}</td>
+                                <td>{{item.todate}}</td>
+                                <td>{{item.reason}}</td>
+                                <td>{{item.assign_by_name}} ({{item.assign_by}})</td>
+                                <td>
+                                    <span *ngIf="item.status == 'Pending'" class="badge badge-warning">{{item.status}}</span>
+                                    <span *ngIf="item.status == 'Approved'" class="badge badge-success">{{item.status}}</span>
+                                    <span *ngIf="item.status == 'Rejected'" class="badge badge-danger">{{item.status}}</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-danger cursor" *ngIf="item.status == 'Pending'" (click)="deleteApplyLeavess(item.id);">Delete</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody *ngIf="responseData.length == 0">
+                            <tr>
+                                <td class="text-center" colspan="11">No Data Found</td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                </div>
+                <!-- pagination -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                            <ul class="pagination float-right">
+                                <li class="paginate_button page-item previous" *ngIf="setPageNo" id="datatable_previous"><a href="javascript:void(0)" (click)="previousSubmit()" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                <li class="paginate_button page-item next" *ngIf="setPageNoNext" id="datatable_next"><a href="javascript:void(0)" (click)="nextSubmit()" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--/ pagination -->
+            </div>
+        </div>
+    </div><!-- end col -->
+
+    <div class="col-xl-12" *ngIf="tabChange == 'viewMispunch'">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title m-t-0 m-b-30">Mispunch Request Status</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Apply Date</th>
+                                <th>Date</th>
+                                <th>In Time</th>
+                                <th>Out Time</th>
+                                <th>Shift</th>
+                                <th>Approved By</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="mispunchData.length > 0">
+                            <tr *ngFor="let item of mispunchData let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.apply_by_name}} ({{item.employee_id}})</td>
+                                <td>{{item.applydate}}</td>
+                                <td>{{item.empmisdate}}</td>
+                                <td>{{item.in_time}}</td>
+                                <td>{{item.out_time}}</td>
+                                <td>{{item.shift}}</td>
+                                <td>{{item.assign_by_name}} ({{item.assign_by}})</td>
+                                <td>
+                                    <span class="badge badge-success" *ngIf="item.status == 'Approved'">Approved</span>
+                                    <span class="badge badge-danger" *ngIf="item.status == 'Rejected'">Rejected</span>
+                                    <span class="badge badge-warning" *ngIf="item.status == 'Pending'">Pendding</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-danger cursor" *ngIf="item.status == 'Pending'" (click)="deleteMApplyLeavess(item.id);">Delete</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody *ngIf="mispunchData == 0">
+                            <tr class="text-center">
+                                <td colspan="10"> <strong>No Data Found</strong> </td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                </div>
+                <!-- pagination -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                            <ul class="pagination float-right">
+                                <li class="paginate_button page-item previous" *ngIf="setPageNoM" id="datatable_previous"><a href="javascript:void(0)" (click)="previousMSubmit()" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                <li class="paginate_button page-item next" *ngIf="setPageNoNextM" id="datatable_next"><a href="javascript:void(0)" (click)="nextMSubmit()" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- / pagination -->
+            </div>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="deletesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>You want to delete this Leave Request !!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" (click)="deleteRow(targetindex)">Yes</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="deleteMsubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>You want to delete this Mispunch !!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" (click)="deleteMRow(targetindexM)">Yes</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

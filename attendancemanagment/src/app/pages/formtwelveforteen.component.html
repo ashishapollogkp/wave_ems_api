@@ -1,0 +1,67 @@
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Download Form 12 and 14</h4>
+    </div>
+</div>
+<a id="ExportExcelData" target="_blank" download href=""></a>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card table-responsive">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-11">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="form-group">
+                                    <label for="userName">From Date *</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-calendar-o"></i></span>
+                                        </div>
+                                        <input type="text" name="from_date" placeholder="dd/mm/yyyy" class="form-control" id="from_date"  checkMandatory="true" (focus)="onFocus()">
+                                    </div>
+                                    <span class="ng-hide displayError" id="from_date_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="form-group">
+                                    <label for="userName">To Date *</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-calendar-o"></i></span>
+                                        </div>
+                                        <input type="text" name="to_date" placeholder="dd/mm/yyyy" class="form-control" id="to_date"  checkMandatory="true" (focus)="onFocus()">
+                                    </div>
+                                    <span class="ng-hide displayError" id="to_date_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="form-group">
+                                    <label for="userName">Report Type *</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                        </div>
+                                        <select class="form-control" id="type" checkMandatory="true" (focus)="onFocus()">
+                                            <option value="form12">Form 12</option>
+                                            <option value="form14">Form 14</option>
+                                        </select>
+                                    </div>
+                                    <span class="ng-hide displayError" id="type_error"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-1">
+                        <div class="form-group">
+                            <label for="userName" style="visibility:hidden;">To Date *</label>
+                            <input type="button" class="btn btn-primary" value="Search" (click)="searchSubmit();">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

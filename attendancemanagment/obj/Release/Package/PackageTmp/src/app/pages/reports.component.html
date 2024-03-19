@@ -1,0 +1,166 @@
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Download Reports</h4>
+    </div>
+</div>
+<a id="ExportExcelData" target="_blank" download href=""></a>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card table-responsive">
+            <div class="card-body">
+                <div class="row" id="profileupdateBasic">
+                    <div class="col-xl-11">
+                        <div class="row">                            
+                            <div class="col-xl-3">
+                                <div class="form-group">
+                                    <label for="userName">From Date *</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-calendar-o"></i></span>
+                                        </div>
+                                        <input type="text" name="from_date" placeholder="dd/mm/yyyy" class="form-control" id="from_date" [(ngModel)]="submitObj.from_date" checkMandatory="true" autocomplete="off" (focus)="onFocus()">
+                                    </div>
+                                    <span class="ng-hide displayError" id="from_date_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3">
+                                <div class="form-group">
+                                    <label for="userName">To Date *</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-calendar-o"></i></span>
+                                        </div>
+                                        <input type="text" name="to_date" placeholder="dd/mm/yyyy" class="form-control" id="to_date" [(ngModel)]="submitObj.to_date" checkMandatory="true" autocomplete="off" (focus)="onFocus()">
+                                    </div>
+                                    <span class="ng-hide displayError" id="to_date_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3">
+                                <div class="form-group">
+                                    <label for="userName">Company Code</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-shield"></i></span>
+                                        </div>
+                                        <select class="form-control" name="pay_code" id="pay_code" [(ngModel)]="submitObj.pay_code" (focus)="onFocus()" checkMandatory="true" (ngModelChange)="onChangeGetDepartment()">
+                                            <option value=""></option>
+                                            <option *ngFor="let item of shiftData let i=index" value="{{item.company_code}}">{{item.name}} ({{item.company_code}})</option>
+                                        </select>
+                                    </div>
+                                    <span class="ng-hide displayError" id="pay_code_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3" *ngIf="submitObj.pay_code != null && submitObj.pay_code != undefined">
+                                <div class="form-group">
+                                    <label for="userName">Department</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-deaf"></i></span>
+                                        </div>
+                                        <select class="form-control" name="department" id="department" [(ngModel)]="submitObj.department" (focus)="onFocus()" checkMandatory="true" (ngModelChange)="searchSubmit()">
+                                            <option value=""></option>
+                                            <option *ngFor="let item of departmentList let i=index" value="{{item.key_description}}">{{item.key_description}} ({{item.pay_code}})</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="col-xl-4">
+                                <div class="form-group">
+                                    <label for="userName">Report Type *</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                        </div>
+                                        <select class="form-control" id="type" [(ngModel)]="submitObj.type" checkMandatory="true" (focus)="onFocus()">
+                                            <option value="Employee">Employee</option>
+                                            <option value="Attendance">Attendance</option>
+                                            <option value="Shift">Shift</option>
+                                            <option value="Department">Department</option>
+                                            <option value="Designation">Designation</option>
+                                            <option value="Companies">Designation</option>
+                                            <option value="LeaveType">Leave Type</option>
+                                        </select>
+                                    </div>
+                                    <span class="ng-hide displayError" id="type_error"></span>
+
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="col-xl-1">
+                        <div class="form-group">
+                            <label for="userName" style="visibility:hidden;">To Date *</label>
+                            <input type="button" class="btn btn-primary" value="Search" (click)="searchSubmit();">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+<div class="row" *ngIf="searchEmpObj">
+    <div class="col-sm-12" id="Gridpdf">
+        <div class="card table-responsive">
+            <div class="card-body">
+                <div class="col-sm-12" style="clear: both;">
+                    <div class="dropdown float-right">
+                        <a class="dropdown-toggle1 card-drop1 btn btn-primary" href="{{baseUrlLink}}/Administrator/ExportAttendanceExcel?name=Attendance&fromDate={{submitObj.from_date}}&toDate={{submitObj.to_date}}&payCode={{submitObj.pay_code}}">Excel Format <i class="fa fa-download"></i></a>
+                        <!--<button class="dropdown-toggle1 card-drop1 btn btn-primary" title="Download Excel Format" (click)="excelFormat();">
+                            Excel Format <i class="fa fa-download"></i>
+                        </button>-->
+                    </div>
+                    <div class="dropdown float-right">
+                        <button class="dropdown-toggle1 card-drop1 btn btn-primary" title="Download PDF Format" (click)="pdfSubmit();">
+                            PDF Format <i class="fa fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-12 text-center" style="clear: both;">
+                    <h4 class="header-title1 m-t-0">Attendance Report</h4>
+                    <p class="header-title1 m-t-0">{{submitObj.from_date}} To {{submitObj.to_date}}</p>
+                </div>
+                
+
+                <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="row"*ngFor="let item of responseData let i=index">
+                        <div class="col-xs-12">Department: {{item.department}}</div>
+                        <table id="datatable" class="table datatable1 table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%; border: 1px solid gainsboro;">
+                            <tbody *ngFor="let item2 of item.employeeAttendance let i=index">
+                                <tr>
+                                    <td rowspan="6">{{item2.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date</td>
+                                    <td *ngFor="let item1 of item2.attendance let i=index">{{item1.date | date : 'dd/MM'}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Status</td>
+                                    <td *ngFor="let item5 of item2.attendance let i=index">{{item5.status}}{{item5.mis}}{{item5.late}}{{item5.absent}}{{item5.early}}</td>
+                                </tr>
+                                <tr>
+                                    <td>In</td>
+                                    <td *ngFor="let item3 of item2.attendance let i=index">{{item3.in_time.slice(0, -3)}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Out</td>
+                                    <td *ngFor="let item4 of item2.attendance let i=index">{{item4.out_time.slice(0, -3)}}</td>
+                                </tr>  
+                                <tr>
+                                    <td>Hrs</td>
+                                    <td *ngFor="let item4 of item2.attendance let i=index">{{item4.total_hrs}}</td>
+                                </tr>                              
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->
+

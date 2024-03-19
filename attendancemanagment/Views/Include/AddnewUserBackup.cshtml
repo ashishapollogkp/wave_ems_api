@@ -1,0 +1,639 @@
+﻿<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Add New Employee</h4>
+    </div>
+</div>
+
+<div class="row">
+    <form id="profileupdateBasic" #catForm="ngForm" style="width: 100%;">
+        <div class="row">
+            <div id="stepid1" class="col-sm-12 step1">
+                <div class="portlet">
+                    <div class="portlet-heading bg-purple">
+                        <h3 class="portlet-title">
+                            Personal Details
+                        </h3>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="bg-default" class="panel-collapse collapse show">
+                        <div class="portlet-body">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Employee Id *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                            </div>
+                                            <input type="text" name="employee_code" placeholder="Enter employee id" class="form-control" id="employee_code" [(ngModel)]="submitObj.employee_code" checkMandatory="true" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="employee_code_error"></span>
+
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Name *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                            </div>
+                                            <input type="text" name="name" placeholder="Enter name" class="form-control" id="name" [(ngModel)]="submitObj.name" autocomplete="off" checkMandatory="true" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="name_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Gender *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-sort-amount-desc"></i></span>
+                                            </div>
+                                            <select class="form-control" name="gender" id="gender" [(ngModel)]="submitObj.gender" checkMandatory="true" (focus)="onFocus()">
+                                                <option value="Male">Male</option>
+                                                <option value="FeMale">Female</option>
+                                            </select>
+                                        </div>
+                                        <span class="ng-hide displayError" id="gender_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Department *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-stumbleupon"></i></span>
+                                            </div>
+                                            <select class="form-control" name="department" id="department" [(ngModel)]="submitObj.department" checkMandatory="true" (focus)="onFocus()">
+                                                <option value=""></option>
+                                                <option *ngFor="let item of departmentList let i=index" value="{{item.key_description}}">{{item.key_description}} ({{item.pay_code}})</option>
+                                            </select>
+                                        </div>
+                                        <span class="ng-hide displayError" id="department_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Designation *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-sort-amount-desc"></i></span>
+                                            </div>
+                                            <select class="form-control" name="designation" id="designation" [(ngModel)]="submitObj.designation" checkMandatory="true" (focus)="onFocus()">
+                                                <option value=""></option>
+                                                <option *ngFor="let item2 of designationList let i=index" value="{{item2.key_description}}">{{item2.key_description}} ({{item2.pay_code}})</option>
+                                            </select>
+                                        </div>
+                                        <span class="ng-hide displayError" id="designation_error"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Role *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-stumbleupon"></i></span>
+                                            </div>
+                                            <select class="form-control" name="role" id="role" [(ngModel)]="submitObj.role" checkMandatory="true" (focus)="onFocus()">
+                                                <option value=""></option>
+                                                <option *ngFor="let item of roleList let i=index" value="{{item.key_code}}">{{item.key_description}} ({{item.pay_code}})</option>
+                                            </select>
+                                        </div>
+                                        <span class="ng-hide displayError" id="role_error"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Father Name</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-male"></i></span>
+                                            </div>
+                                            <input type="text" name="father_name" placeholder="Enter father name" class="form-control" id="father_name" [(ngModel)]="submitObj.father_name" checkMandatory="true" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="father_name_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Date of Birth *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-calendar-o"></i></span>
+                                            </div>
+                                            <input type="text" name="dob" placeholder="dd/mm/yyyy" class="form-control" id="dob" [(ngModel)]="submitObj.dob" checkMandatory="true" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="dob_error"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Date of Joining *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <input type="text" name="doj" placeholder="dd/mm/yyyy" class="form-control" id="doj" [(ngModel)]="submitObj.doj" checkMandatory="true" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="doj_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6" *ngIf="setUpdate">
+                                    <div class="form-group">
+                                        <label for="userName">Date of Leaving</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <input type="text" name="dol" placeholder="dd/mm/yyyy" class="form-control" id="dol" [(ngModel)]="submitObj.dol" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Reporting To</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-reply"></i></span>
+                                            </div>
+                                            <input type="text" id="reporting_to" class="form-control ui-autocomplete-input" placeholder="Search by name or id" (ngModelChange)="ngEmployeeTypeHead();" [(ngModel)]="submitObj.reporting_to" checkMandatory="false" autocomplete="off" name="reporting_to" (focus)="onFocus()" />
+                                            <!--<input type="text" name="reporting_to" placeholder="Search by name or employee id" class="form-control" id="reporting_to" [(ngModel)]="submitObj.reporting_to" checkMandatory="true" autocomplete="off" (focus)="onFocus()">-->
+                                        </div>
+                                        <span class="ng-hide displayError" id="reporting_to_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Machine Id</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-magic"></i></span>
+                                            </div>
+                                            <input type="text" name="machine_id" placeholder="Enter machine id" class="form-control" id="machine_id" [(ngModel)]="submitObj.machine_id" checkMandatory="false" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="machine_id_error"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Status *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-smile-o"></i></span>
+                                            </div>
+                                            <select class="form-control" id="status" name="status" [(ngModel)]="submitObj.status" checkMandatory="true" (focus)="onFocus()">
+                                                <option value=""></option>
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+                                                <!--<option value="Resigned">Resigned</option>-->
+                                            </select>
+                                        </div>
+                                        <span class="ng-hide displayError" id="status_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary waves-effect waves-light" id="button1" (click)="nextSptep1()">Next</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="stepid2" class="col-sm-12 step2 ng-hide">
+                <div class="portlet">
+                    <div class="portlet-heading bg-warning">
+                        <h3 class="portlet-title">
+                            Communication
+                        </h3>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="bg-default" class="panel-collapse collapse show">
+                        <div class="portlet-body">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Email *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
+                                            </div>
+                                            <input type="text" name="email" placeholder="Enter email" class="form-control" id="email" [(ngModel)]="submitObj.email" checkMandatory="true" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="email_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Mobile Number *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-mobile"></i></span>
+                                            </div>
+                                            <input type="text" name="mobile_no" placeholder="Enter mobile no" class="form-control" id="mobile_no" [(ngModel)]="submitObj.mobile_no" checkMandatory="true" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="mobile_no_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Pan Number</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-pagelines"></i></span>
+                                            </div>
+                                            <input type="text" name="pan_no" placeholder="Enter pan no" class="form-control" id="pan_no" [(ngModel)]="submitObj.pan_no" checkMandatory="false" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="pan_no_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">UAN Number</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-mobile"></i></span>
+                                            </div>
+                                            <input type="text" name="uan_no" placeholder="Enter UAN No." class="form-control" id="uan_no" [(ngModel)]="submitObj.uan_no" checkMandatory="false" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="uan_no_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Aadhaar Number</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                            </div>
+                                            <input type="number" name="aadhar_number" placeholder="Enter aadhaar number" class="form-control" id="aadhar_number" [(ngModel)]="submitObj.aadhar_number" autocomplete="off" maxlength="12" checkMandatory="false" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="aadhar_number_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary waves-effect waves-light" id="button1" (click)="previousSptep1()">Previous</button>
+                                        <button class="btn btn-primary waves-effect waves-light m-l-5" id="button1" (click)="nextSptep2()">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="stepid3" class="col-sm-12 step3 ng-hide">
+                <div class="portlet">
+                    <div class="portlet-heading bg-inverse">
+                        <h3 class="portlet-title">
+                            Accounts
+                        </h3>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="bg-default" class="panel-collapse collapse show">
+                        <div class="portlet-body">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Bank Name</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <input type="text" name="bank_name" placeholder="ex. State Bank Of India" class="form-control" id="bank_name" [(ngModel)]="submitObj.bank_name" checkMandatory="false" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="bank_name_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Account Number</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <input type="text" name="acc_no" placeholder="ex. 1111111111" class="form-control" id="acc_no" [(ngModel)]="submitObj.acc_no" checkMandatory="false" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="acc_no_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">IFSC Code</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <input type="text" name="ifsc_code" placeholder="ex. SBIN0000000" class="form-control" id="ifsc_code" [(ngModel)]="submitObj.ifsc_code" checkMandatory="false" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="ifsc_code_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Monthaly Salary</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <input type="text" name="employee_salary" placeholder="ex. SBIN0000000" class="form-control" id="employee_salary" [(ngModel)]="submitObj.employee_salary" checkMandatory="false" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                        <span class="ng-hide displayError" id="employee_salary_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary waves-effect waves-light" id="button1" (click)="previousSptep2()">Previous</button>
+                                        <button class="btn btn-primary waves-effect waves-light m-l-5" id="button1" (click)="nextSptep3()">Next</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="stepid4" class="col-sm-12 step4 ng-hide">
+                <div class="portlet">
+                    <div class="portlet-heading bg-success">
+                        <h3 class="portlet-title">
+                            Location
+                        </h3>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="bg-default" class="panel-collapse collapse show">
+                        <div class="portlet-body">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="form-group">
+                                        <label for="userName">Company*</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-area-chart"></i></span>
+                                            </div>
+                                            <select class="form-control" name="pay_code" id="pay_code" [(ngModel)]="submitObj.pay_code" checkMandatory="true" (focus)="onFocus()">
+                                                <option value=""></option>
+                                                <option *ngFor="let item of companyList let i=index" value="{{item.company_code}}">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                        <span class="ng-hide displayError" id="pay_code_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+                                    <div class="form-group">
+                                        <label for="userName">Employee Type *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-area-chart"></i></span>
+                                            </div>
+                                            <select class="form-control" name="employee_type" id="employee_type" [(ngModel)]="submitObj.employee_type" checkMandatory="true" (focus)="onFocus()">
+                                                <option value="Temparerly">Temparerly</option>
+                                                <option value="Parmanent">Permanent</option>
+                                            </select>
+                                        </div>
+
+                                        <span class="ng-hide displayError" id="employee_type_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+                                    <div class="form-group">
+                                        <label for="userName">Shift *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-shirtsinbulk"></i></span>
+                                            </div>
+                                            <select class="form-control" name="shhift" id="shift" [(ngModel)]="submitObj.shift" (focus)="onFocus()">
+                                                <option value=""></option>
+                                                <option *ngFor="let item of shiftData let i=index" value="{{item.shift_code}}">{{item.shift_name}}</option>
+                                            </select>
+                                        </div>
+
+                                        <span class="ng-hide displayError" id="shift_error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary waves-effect waves-light" id="button1" (click)="previousSptep3()">Previous</button>
+                                        <button class="btn btn-primary waves-effect waves-light m-l-5" id="button1" (click)="nextSptep4()">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="stepid5" class="col-sm-12 step5 ng-hide">
+                <div class="portlet">
+                    <div class="portlet-heading bg-info">
+                        <h3 class="portlet-title">
+                            Leave Corner
+                        </h3>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="bg-default" class="panel-collapse collapse show">
+                        <div class="portlet-body">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="form-group">
+                                        <label for="userName">EL</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-envira"></i></span>
+                                            </div>
+                                            <input type="text" name="el" placeholder="Enter EL" class="form-control" id="el" [(ngModel)]="submitObj.el" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+                                    <div class="form-group">
+                                        <label for="userName">CL</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-envira"></i></span>
+                                            </div>
+                                            <input type="text" name="cl" placeholder="Enter CL" class="form-control" id="cl" [(ngModel)]="submitObj.cl" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+                                    <div class="form-group">
+                                        <label for="userName">SL</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-envira"></i></span>
+                                            </div>
+                                            <input type="text" name="sl" placeholder="Enter SL" class="form-control" id="sl" [(ngModel)]="submitObj.sl" autocomplete="off" (focus)="onFocus()">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Check In by Mobile Office Access</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa-check"></i></span>
+                                            </div>
+                                            <select class="form-control" id="office_emp" name="office_emp" [(ngModel)]="submitObj.office_emp" (focus)="onFocus()">
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Check In by Mobile Market Access</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa-check"></i></span>
+                                            </div>
+                                            <select class="form-control" id="marketing_emp" name="marketing_emp" [(ngModel)]="submitObj.marketing_emp" (focus)="onFocus()">
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12">
+                                    <div class="form-group text-left m-b-0">
+                                        <button class="btn btn-primary waves-effect waves-light" id="button1" (click)="previousSptep4()">Previous</button>
+                                        <button *ngIf="setCreate" class="btn btn-primary waves-effect waves-light m-l-5" (click)="createSubmit()" type="button">
+                                            Submit
+                                        </button>
+                                        <button *ngIf="setUpdate" class="btn btn-primary waves-effect waves-light m-l-5" (click)="updateSubmit()" type="button">
+                                            Update
+                                        </button>
+                                        <button type="reset" class="btn btn-warning waves-effect waves-light m-l-5">
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-lg-12">
+                <div class="portlet">
+                    <div class="portlet-heading bg-custom">
+                        <h3 class="portlet-title">
+                            Attendance Corner
+                        </h3>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="bg-default" class="panel-collapse collapse show">
+                        <div class="portlet-body">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Check In by Mobile Access</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa-check"></i></span>
+                                            </div>
+                                            <select class="form-control" id="office_emp" name="office_emp" [(ngModel)]="submitObj.office_emp" (focus)="onFocus()">
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label for="userName">Check In by Mobile Field Access</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa-check"></i></span>
+                                            </div>
+                                            <select class="form-control" id="marketing_emp" name="marketing_emp" [(ngModel)]="submitObj.marketing_emp" (focus)="onFocus()">
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group text-left m-b-0">
+                                        <button *ngIf="setCreate" class="btn btn-primary waves-effect waves-light" (click)="createSubmit()" type="button">
+                                            Submit
+                                        </button>
+                                        <button *ngIf="setUpdate" class="btn btn-primary waves-effect waves-light" (click)="updateSubmit()" type="button">
+                                            Update
+                                        </button>
+                                        <button type="reset" class="btn btn-warning waves-effect waves-light m-l-5">
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div><!-- end row -->
+    </form><!-- end col -->
+</div>
+<!-- end row -->
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="changesubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-success">
+                            <strong>Submission Successful !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!--  -->
+    <div class="modal fade" id="errorsubmit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-danger">
+                            <strong>Please check errors !!!</strong>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->

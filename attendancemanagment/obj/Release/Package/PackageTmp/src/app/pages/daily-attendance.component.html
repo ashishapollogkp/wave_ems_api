@@ -1,0 +1,185 @@
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Daily Attendance</h4>
+    </div>
+</div>
+<a id="ExportExcelData" target="_blank" download href=""></a>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card table-responsive">
+            <div class="card-body">
+                <div class="row" id="profileupdateBasic">
+                    <div class="col-xl-11">
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <div class="form-group">
+                                    <label for="userName">Employee Id</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                        </div>
+                                        <input type="text" name="employee_code" placeholder="Employee id" class="form-control" id="employee_code" [(ngModel)]="submitObj.employee_code" (focus)="onFocus()">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3">
+                                <div class="form-group">
+                                    <label for="userName">From Date <span class="require">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-calendar-o"></i></span>
+                                        </div>
+                                        <input type="text" name="from_date" placeholder="dd/mm/yyyy" class="form-control" id="from_date" checkMandatory="true" readonly autocomplete="off" (focus)="onFocus()">
+                                    </div>
+                                    <span class="ng-hide displayError" id="from_date_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3">
+                                <div class="form-group">
+                                    <label for="userName">To Date <span class="require">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-calendar-o"></i></span>
+                                        </div>
+                                        <input type="text" name="to_date" placeholder="dd/mm/yyyy" class="form-control" id="to_date" checkMandatory="true" readonly autocomplete="off" (focus)="onFocus()">
+                                    </div>
+                                    <span class="ng-hide displayError" id="to_date_error"></span>
+                                </div>
+                            </div>
+                            <!--<div class="col-xl-3">
+                                <div class="form-group">
+                                    <label for="userName">Department</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-deaf"></i></span>
+                                        </div>
+                                        <select class="form-control" name="department" id="department" [(ngModel)]="submitObj.department" (focus)="onFocus()" (ngModelChange)="getByDepartment()">
+                                            <option value=""></option>
+                                            <option *ngFor="let item of departmentList let i=index" value="{{item.key_description}}">{{item.key_description}} ({{item.pay_code}})</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>-->
+                            <div class="col-xl-3">
+                                <div class="form-group">
+                                    <label for="userName">Company Code</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-shield"></i></span>
+                                        </div>
+                                        <select class="form-control" name="shift" id="shift" [(ngModel)]="submitObj.shift" (focus)="onFocus()" (ngModelChange)="getByShift()">
+                                            <option value=""></option>
+                                            <option *ngFor="let item of shiftData let i=index" value="{{item.company_code}}">{{item.name}} ({{item.company_code}})</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="col-xl-2">
+                                <div class="form-group">
+                                    <label for="userName">Status</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-shield"></i></span>
+                                        </div>
+                                        <select class="form-control" name="status" id="status" [(ngModel)]="submitObj.status" (focus)="onFocus()" (ngModelChange)="getByStatus()">
+                                            <option value=""></option>
+                                            <option value="P">Present</option>
+                                            <option value="AB">Absent</option>
+                                            <option value="E">Early</option>
+                                            <option value="L">Late</option>
+                                            <option value="MP">Mispunch</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="col-xl-1">
+                        <div class="form-group">
+                            <label for="userName" style="visibility:hidden;">To Date *</label>
+                            <input type="button" class="btn btn-primary" value="Search" (click)="searchSubmit();">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" id="Gridpdf">
+        <div class="card table-responsive">
+            <div class="card-body">
+                <div class="col-sm-12" style="clear: both;">
+                    <div class="dropdown float-right">
+                        <a class="dropdown-toggle1 card-drop1 btn btn-primary" href="{{baseUrlLink}}/Administrator/ExportExcel?name=DailyAttendance&fromDate={{submitObj.from_date}}&toDate={{submitObj.to_date}}">Excel Format <i class="fa fa-download"></i></a>
+                    </div>
+                    <div class="dropdown float-right">
+                        <button class="dropdown-toggle1 card-drop1 btn btn-primary" title="download employee master" (click)="pdfSubmit();">
+                            PDF Format <i class="fa fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="clear: both; padding-top: 1px;">
+
+                    <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer m-t-20 clearfix">
+                        <div class="row">
+                            <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%; border: 1px solid gainsboro;">
+                                <thead>
+                                    <tr>
+                                        <th>Employee Name</th>
+                                        <th>Company Code</th>
+                                        <th>Punch Time</th>
+                                        <th>Day</th>
+                                        <th>Shift</th>
+                                        <th>Status</th>
+                                        <th style="width: 200px;">Address</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody *ngIf='viewList.length > 0'>
+                                    <tr *ngFor="let item of viewList let i=index">
+                                        <td>{{item.name}} ({{item.employee_id}})</td>
+                                        <td>{{item.pay_code}}</td>
+                                        <td>{{item.date}}</td>
+                                        <td>{{item.day}}</td>
+                                        <td>{{item.shift}}</td>
+                                        <td>{{item.status}}</td>
+                                        <td>{{item.location_address}}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody *ngIf='viewList.length == 0'>
+                                    <tr>
+                                        <td class="text-center" colspan="7"> <strong>No Data Found</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5">
+                                <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
+                            </div>
+                            <div class="col-sm-12 col-md-7">
+                                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                    <ul class="pagination float-right">
+                                        <li class="paginate_button page-item previous" *ngIf="setPageNo" id="datatable_previous"><a href="javascript:void(0)" (click)="previousSubmit()" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                        <li class="paginate_button page-item next" *ngIf="setPageNoNext" id="datatable_next"><a href="javascript:void(0)" (click)="nextSubmit()" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+
+
+            </div>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->

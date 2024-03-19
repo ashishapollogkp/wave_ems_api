@@ -1,0 +1,71 @@
+@{
+    Layout = null;
+    ViewBag.Title = "My Dashboard";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title | Attendance Managment System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hero Moter Cycle">
+    <meta name="author" content="Skylabs Solutions India PVT LTD">
+    <meta name="csrf-token" content="hsmcdfgtrdfg//gsfrrh">
+    <link rel="icon" type="image/x-icon" href="~/Images/favicon.png">
+    @Styles.Render("~/Content/hmc")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .ct-series-c .ct-slice-pie {
+            fill: #FFC011;
+        }
+
+        .ct-series-b .ct-slice-pie {
+            fill: #4CAF50;
+        }
+
+        .ct-chart .ct-label {
+            fill: #797979;
+            color: #797979;
+            font-size: 12px;
+            line-height: 1;
+        }
+    </style>
+
+</head>
+<body>
+
+  <div class="spinner" id="spinnerinitloading">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+  @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logOffForm" }))
+  {
+    @Html.AntiForgeryToken()
+  }
+
+  <div id="BaseUrl" data-baseurl="@System.Configuration.ConfigurationManager.AppSettings["baseurl"].ToString()"></div>
+  <div id="activKey" data-bind="@ViewBag.accessKey"></div>
+  <div id="sidudethmc" data-bind="@ViewBag.employee_id"></div>
+
+  <app-root>
+
+    <div class="preloader" style="position: absolute; top: 45%; left: 45%;">
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+      </svg>
+    </div>
+  </app-root>
+
+  <!-- material design scripts -->
+  @Scripts.Render("~/Scripts/calander/moment.min.js")
+  @Scripts.Render("~/bundles/hmcjs")
+  @Scripts.Render("~/Scripts/js/jquery-ui.js")
+  @Scripts.Render("~/Scripts/calander/fullcalendar.js")
+  @Scripts.Render("~/bundles/hmcangular")
+
+</body>
+</html>
