@@ -14168,10 +14168,104 @@ namespace attendancemanagment.Controllers
                 adapter.Fill(ds);
                 con.Close();
 
+
+                DataTable products = ds.Tables[0];
+
+
+                List<employeeAttendanceList> studentList = new List<employeeAttendanceList>();
+                studentList = (from DataRow dr in products.Rows
+                               select new employeeAttendanceList()
+                               {
+                                 
+                                 //StudentName = dr["StudentName"].ToString(),
+                                 //Address = dr["Address"].ToString(),
+                                 //MobileNo = dr["MobileNo"].ToString()
+
+                                 absent = dr["absent"].ToString(),
+                                 adate = dr["adate"].ToString(),
+                                 attdate = dr["attdate"].ToString(),
+                                 date = dr["date"].ToString(),
+                                 day = dr["day"].ToString(),
+                                 early = dr["early"].ToString(),
+                                 employee_id = dr["employee_id"].ToString(),
+                                 Id = dr["Id"].ToString(),
+                                 in_latitude = dr["in_latitude"].ToString(),
+                                 in_longitude = dr["in_longitude"].ToString(),
+                                 in_time = dr["in_time"].ToString(),
+                                 late = dr["late"].ToString(),
+                                 location_address = dr["location_address"].ToString(),
+                                 mis = dr["mis"].ToString(),
+                                 Name = dr["Name"].ToString(),
+                                 out_time = dr["out_time"].ToString(),
+                                 PunchIn = dr["PunchIn"].ToString(),
+                                 PunchOut = dr["PunchOut"].ToString(),
+                                 sdate = dr["sdate"].ToString(),
+                                 Shift = dr["Shift"].ToString(),
+                                 status = dr["status"].ToString(),
+                                 total_hrs = dr["total_hrs"].ToString(),
+                                 trn_date= dr["trn_date"].ToString(),
+
+
+                               }).ToList();
+
+
+
+                foreach (employeeAttendanceList item in studentList)
+                {
+
+                  DateTime CheckdateTime = Convert.ToDateTime(item.trn_date);
+
+                  var Holiday = db.HolidayMaster.Where(x => x.holiday_date == CheckdateTime.Date && x.h_type == "H").FirstOrDefault();
+                  var Woff = db.HolidayMaster.Where(x => x.holiday_date == CheckdateTime.Date && x.h_type == "W").FirstOrDefault();
+
+
+                  if (Holiday != null && Woff == null)
+                  {
+                    item.check_id = "1";
+                    item.check_flag = "H";
+                  }
+
+                  else if (Holiday == null && Woff != null)
+                  {
+                    item.check_id = "2";
+                    item.check_flag = "W";
+                  }
+                  else if (Holiday != null && Woff != null)
+                  {
+                    item.check_id = "3";
+                    item.check_flag = "B";
+                  }
+                  else
+                  {
+                    item.check_id = "0";
+                    item.check_flag = "0";
+                  }
+
+
+
+                  //if (item.h_type == "H")
+                  //{
+
+                  //  item.holidayType = "Holiday";
+
+                  //}
+                  //else if (item.h_type == "W")
+                  //{
+                  //  item.holidayType = "Weekly Off";
+                  //}
+                  //else
+                  //{
+                  //  item.holidayType = "Both";
+                  //}
+
+                }
+
+
+
                 response.status = "success";
                 response.flag = "1";
                 response.alert = "success";
-                response.data = ds.Tables[0];
+                response.data = studentList;
 
 
               }
@@ -14190,7 +14284,35 @@ namespace attendancemanagment.Controllers
     }
 
 
+    public class employeeAttendanceList
+    {
+      public string Id { get; set; }
+      public string employee_id { get; set; }
+      public string Name { get; set; }
+      public string attdate { get; set; }
+      public object date { get; set; }
+      public string day { get; set; }
+      public object PunchIn { get; set; }
+      public object PunchOut { get; set; }
+      public string in_time { get; set; }
+      public string out_time { get; set; }
+      public object adate { get; set; }
+      public string sdate { get; set; }
+      public string total_hrs { get; set; }
+      public string Shift { get; set; }
+      public string status { get; set; }
+      public string absent { get; set; }
+      public string mis { get; set; }
+      public string early { get; set; }
+      public string late { get; set; }
+      public string in_latitude { get; set; }
+      public string in_longitude { get; set; }
+      public string location_address { get; set; }
+      public string check_flag { get; set; }
+      public string check_id { get; set; }
 
+      public string trn_date { get; set; }
+    }
 
 
 
@@ -18090,7 +18212,166 @@ namespace attendancemanagment.Controllers
 
 
 
+    [HttpPost]
+    [Route("GetHolidayList")]
+    public HmcHolidayResponse GetHolidayList(HmcHolidayRequest req)
+    {
+      HmcHolidayResponse response = new HmcHolidayResponse();
+      response.flag = "0";
+      response.status = "error";
+      response.alert = "data is not valid";
+      try
+      {
+        if (ModelState.IsValid)
+        {
+          using (AttendanceContext db = new AttendanceContext())
+          {
+            string accessKey = CryptoEngine.Decrypt(req.accessKey, "skym-3hn8-sqoy19");
+            if (accessKey == @System.Configuration.ConfigurationManager.AppSettings["accesskey"])
+            {
+              string employeeId = CryptoEngine.Decrypt(req.employee_id, "skym-3hn8-sqoy19");
+              var userValid = db.EmployeeMaster.Where(user => user.employee_id == employeeId && user.status == "Active").FirstOrDefault();
+              if (userValid != null)
+              {
+                int YearName = DateTime.Now.Year;
 
+
+                List<HmcHolidayModel> holidayData = (from d in db.HolidayMaster
+                                                     where d.h_type == "H" && d.pay_code == userValid.pay_code && d.YearName==YearName
+                                                     orderby d.holiday_date
+                                                     select new HmcHolidayModel
+                                                     {
+                                                       holidayType = d.pay_code,
+                                                       holiday_date = d.holiday_date,
+                                                       pay_code = d.pay_code,
+                                                       h_type = d.h_type,
+                                                       id = d.id,
+                                                       title = d.title
+                                                     }).ToList();
+
+
+                if (holidayData.Count > 0)
+                {
+                  foreach (HmcHolidayModel item in holidayData)
+                  {
+                    if (item.h_type == "H")
+                    {
+
+                      item.holidayType = "Holiday";
+
+                    }
+                    else if (item.h_type == "W")
+                    {
+                      item.holidayType = "Weekly Off";
+                    }
+                    else
+                    {
+                      item.holidayType = "Both";
+                    }
+
+                  }
+
+                  response.flag = "1";
+                  response.status = "success";
+                  response.alert = "success";
+                  response.data = holidayData;
+
+                }
+                else { }
+              }
+
+
+
+            }
+
+          }
+        }
+      }
+      catch (Exception e)
+      {
+        response.alert = e.Message;
+      }
+      return response;
+    }
+
+
+
+    [HttpPost]
+    [Route("GetHolidayOrOffDates")]
+    public HmcCheckHolidayResponse GetHolidayOrOffDates(HmcCheckHolidayRequest req)
+    {
+      HmcCheckHolidayResponse response = new HmcCheckHolidayResponse();
+      response.flag = "0";
+      response.status = "error";
+
+      try
+      {
+        if (ModelState.IsValid)
+        {
+          using (AttendanceContext db = new AttendanceContext())
+          {
+            string accessKey = CryptoEngine.Decrypt(req.accessKey, "skym-3hn8-sqoy19");
+            if (accessKey == @System.Configuration.ConfigurationManager.AppSettings["accesskey"])
+            {
+              string employeeId = CryptoEngine.Decrypt(req.employee_id, "skym-3hn8-sqoy19");
+              var userValid = db.EmployeeMaster.Where(user => user.employee_id == employeeId && user.status == "Active").FirstOrDefault();
+              if (userValid != null)
+              {
+                int YearName = DateTime.Now.Year;
+
+                DateTime fromTime = Convert.ToDateTime(req.check_date);
+
+                var Holiday = db.HolidayMaster.Where(x => x.holiday_date == fromTime && x.YearName == YearName && x.h_type == "H").FirstOrDefault();
+                var Woff = db.HolidayMaster.Where(x => x.holiday_date == fromTime && x.YearName == YearName && x.h_type == "W").FirstOrDefault();
+
+
+                if (Holiday != null && Woff == null)
+                {
+                  response.check_id = "1";
+                  response.check_flag = "H";
+                }
+
+                else if (Holiday == null && Woff != null)
+                {
+                  response.check_id = "2";
+                  response.check_flag = "W";
+                }
+                else if (Holiday != null && Woff != null)
+                {
+                  response.check_id = "3";
+                  response.check_flag = "B";
+                }
+                else
+                {
+                  response.check_id = "0";
+                  response.check_flag = "0";
+                }
+
+                response.flag = "1";
+                response.status = "success";
+
+
+
+
+
+              }
+              else { }
+            }
+
+
+
+          }
+
+
+
+        }
+      }
+      catch (Exception e)
+      {
+        response.status = e.Message;
+      }
+      return response;
+    }
 
 
 

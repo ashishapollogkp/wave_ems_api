@@ -250,6 +250,8 @@ namespace attendancemanagment.Models
     public string modify_by { get; set; }
     public DateTime modify_date { get; set; }
     public string pay_code { get; set; }
+    public string h_type { get; set; }
+    public int YearName { get; set; }
 
   }
 

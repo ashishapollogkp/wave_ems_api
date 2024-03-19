@@ -1378,5 +1378,53 @@ namespace attendancemanagment.Models
   }
 
 
+  public class HmcHolidayRequest
+  {
+    public string employee_id { get; set; }
+    public string accessKey { get; set; }
+    //public string htype { get; set; }
+
+  }
+
+  public class HmcHolidayResponse
+  {
+    public string status { get; set; }
+    public string flag { get; set; }
+    public dynamic alert { get; set; }
+    public List<HmcHolidayModel> data { get; set; }
+  }
+
+
+  public class HmcHolidayModel
+  {
+    public int id { get; set; }
+    public string title { get; set; }
+    public DateTime holiday_date { get; set; } 
+   
+    public string pay_code { get; set; }
+    public string h_type { get; set; }
+    public string holidayType { get; set; }
+
+  }
+
+
+  public class HmcCheckHolidayRequest
+  {
+    public string accessKey { get; set; }
+    public string employee_id { get; set; }
+    public string check_date { get; set; }
+    //public string htype { get; set; }
+
+  }
+
+  public class HmcCheckHolidayResponse
+  {
+    public string status { get; set; }
+    public string flag { get; set; }
+
+    public string check_flag { get; set; }
+    public string check_id { get; set; }
+
+  }
 
 }
