@@ -302,6 +302,14 @@ namespace attendancemanagment.Models
     public string accessKey { get; set; }
     public string attendance_type { get; set; }
     public string pay_code { get; set; }
+
+    
+    public string LocationName { get; set; }
+    public string ShiftName { get; set; }
+    public string ShiftTimeFrom { get; set; }
+    public string ShiftTimeTo { get; set; }
+
+
     public List<LatLongModel> location_list { get; set; }
   }
 

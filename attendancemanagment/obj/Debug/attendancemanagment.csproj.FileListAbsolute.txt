@@ -887,3 +887,4 @@ H:\Wave_EMS\wave_ems_api\attendancemanagment\obj\Debug\attendancemanagment.cspro
 H:\Wave_EMS\wave_ems_api\attendancemanagment\obj\Debug\attendancemanagment.csproj.CopyComplete
 H:\Wave_EMS\wave_ems_api\attendancemanagment\obj\Debug\attendancemanagment.dll
 H:\Wave_EMS\wave_ems_api\attendancemanagment\obj\Debug\attendancemanagment.pdb
+H:\Wave_EMS\wave_ems_api\attendancemanagment\obj\Debug\attendancemanagment.csproj.AssemblyReference.cache

@@ -5854,7 +5854,10 @@ namespace attendancemanagment.Controllers
                                                     role = d.role,
                                                     employee_type = d.employeement_type,
                                                     feature_image = d.feature_image,
-                                                    attendance_type=d.attendance_type
+                                                    attendance_type=d.attendance_type,
+                                                    ShiftName=d.shift,
+                                                    pay_code=d.pay_code
+
                                                   }).FirstOrDefault();
 
                 if (empMaster.dob != null)
@@ -5875,6 +5878,45 @@ namespace attendancemanagment.Controllers
                                                    select d.name).FirstOrDefault();
                   }
                 }
+
+                if (!string.IsNullOrEmpty(empMaster.pay_code))
+                {
+                  if (empMaster.pay_code != "0")
+                  {
+                    empMaster.LocationName = (from d in db.CompaniesMaster
+                                                   where d.company_code.Equals(empMaster.pay_code)
+                                                   select d.company_address).FirstOrDefault();
+
+                    empMaster.company_name = (from d in db.CompaniesMaster
+                                              where d.company_code.Equals(empMaster.pay_code)
+                                              select d.name).FirstOrDefault();
+
+                  }
+                }
+
+
+                if (!string.IsNullOrEmpty(empMaster.ShiftName))
+                {
+                  if (empMaster.ShiftName != "")
+                  {
+                    var shiftData =  db.Shift.Where(d=>d.shift_name.Equals(empMaster.ShiftName) && d.pay_code.Equals(empMaster.pay_code)                              
+                                                   ).FirstOrDefault();
+                    if (shiftData != null)
+                    {
+
+                      empMaster.ShiftTimeFrom = shiftData.start_time;
+                      empMaster.ShiftTimeTo = shiftData.end_time;
+
+                    }
+                    else
+                    {
+                      empMaster.ShiftTimeFrom = "00:00:00";
+                      empMaster.ShiftTimeTo = "00:00:00";
+                    }
+
+                  }
+                }
+
 
                 response.status = "success";
                 response.flag = "1";
